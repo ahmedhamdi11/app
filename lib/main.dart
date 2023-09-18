@@ -13,9 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
       title: 'App',
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          elevation: 2,
+        ),
         dialogTheme: const DialogTheme(
           surfaceTintColor: Colors.black,
         ),
