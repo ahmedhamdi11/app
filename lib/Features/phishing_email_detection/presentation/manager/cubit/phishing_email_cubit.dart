@@ -1,4 +1,4 @@
-import 'package:app/Features/phishing_email_detection/data/models/email_detection_model.dart';
+import 'package:app/core/models/prediction_model.dart';
 import 'package:app/Features/phishing_email_detection/data/repos/phishing_email_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'phishing_email_states.dart';

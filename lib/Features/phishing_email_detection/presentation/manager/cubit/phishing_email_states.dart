@@ -7,7 +7,7 @@ class PhishingEDInitialState extends PhishingEDStates {}
 class CheckEmailLoadingState extends PhishingEDStates {}
 
 class CheckEmailSuccessState extends PhishingEDStates {
-  final EmailDetectionModel prediction;
+  final PredictionModel prediction;
 
   CheckEmailSuccessState(this.prediction);
 }

@@ -27,7 +27,7 @@ class ApiServices {
     required String endPoint,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? queryParameters,
-    Map<String, dynamic>? data,
+    Object? data,
   }) async {
     Response response = await dio.post(
       endPoint,
