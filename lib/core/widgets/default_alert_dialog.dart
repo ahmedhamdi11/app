@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class DefaultAlertDialog extends StatelessWidget {
   const DefaultAlertDialog({
@@ -18,9 +19,15 @@ class DefaultAlertDialog extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         child: content,
       ),
-      actions: actions,
+      actions: actions ??
+          [
+            OutlinedButton(
+              onPressed: () => GoRouter.of(context).pop(),
+              child: const Text('ok'),
+            )
+          ],
       insetPadding:
-          const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+          const EdgeInsets.symmetric(horizontal: 20.0, vertical: 24.0),
     );
   }
 }

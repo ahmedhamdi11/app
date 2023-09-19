@@ -17,3 +17,13 @@ class DetectFraudsFailureState extends FraudsDetectionState {
 
   DetectFraudsFailureState(this.errMessage);
 }
+
+class PickFileSuccessState extends FraudsDetectionState {}
+
+class PickFileFailureState extends FraudsDetectionState {
+  final String errMassage;
+
+  PickFileFailureState(this.errMassage);
+}
+
+class FileDeleteState extends FraudsDetectionState {}

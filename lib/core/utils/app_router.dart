@@ -1,3 +1,6 @@
+import 'package:app/Features/frauds_detection/data/repos/frauds_detection_repo_impl.dart';
+import 'package:app/Features/frauds_detection/presentation/manager/cubits/cubit/frauds_detection_cubit.dart';
+import 'package:app/Features/frauds_detection/presentation/views/frauds_detection_view.dart';
 import 'package:app/Features/home/presentation/views/home_view.dart';
 import 'package:app/Features/phishing_email_detection/data/repos/email_detection_repo_impl.dart';
 import 'package:app/Features/phishing_email_detection/presentation/manager/cubit/phishing_email_cubit.dart';
@@ -9,6 +12,8 @@ import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
   static const emailDetectionViewPath = '/emailDetectionViewPath';
+  static const fraudsDetectionViewPath = '/fraudsDetectionViewPath';
+
   static GoRouter router = GoRouter(
     initialLocation: '/',
     routes: [
@@ -26,7 +31,18 @@ abstract class AppRouter {
             child: const EmailDetectionView(),
           ),
         ),
-      )
+      ),
+      GoRoute(
+        path: fraudsDetectionViewPath,
+        pageBuilder: (context, state) => defaultPageTransitionBuilder(
+          key: state.pageKey,
+          child: BlocProvider(
+            create: (context) => FraudsDetectionCubit(
+                fraudsDetectionRepo: FraudsDetectionRepoImpl(ApiServices())),
+            child: const FraudsDetectionView(),
+          ),
+        ),
+      ),
     ],
   );
 }

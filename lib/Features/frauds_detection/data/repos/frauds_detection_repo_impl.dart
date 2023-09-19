@@ -17,9 +17,12 @@ class FraudsDetectionRepoImpl implements FraudsDetectionRepo {
   Future<Either<Failure, PredictionModel>> detectFrauds(
       {required File file}) async {
     FormData formData = FormData.fromMap({
-      'file': await MultipartFile.fromFile(file.path,
-          filename: file.path.split('/').last),
+      'file': await MultipartFile.fromFile(
+        file.path,
+        filename: file.path.split('/').last,
+      ),
     });
+
     try {
       Response response = await apiServices.post(
         endPoint: kFraudsDetectionEndPoint,

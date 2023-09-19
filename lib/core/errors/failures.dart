@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-abstract class Failure {
+class Failure {
   final String errMessage;
   Failure(this.errMessage);
 }

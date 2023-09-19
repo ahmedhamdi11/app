@@ -12,7 +12,8 @@ class HomeViewBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 28.0),
       children: [
         DefaultButton(
-          onPressed: () {},
+          onPressed: () =>
+              GoRouter.of(context).push(AppRouter.fraudsDetectionViewPath),
           btnText: 'Fraud Detection',
         ),
         const SizedBox(
@@ -33,9 +34,8 @@ class HomeViewBody extends StatelessWidget {
           height: 12.0,
         ),
         DefaultButton(
-          onPressed: () {
-            GoRouter.of(context).push(AppRouter.emailDetectionViewPath);
-          },
+          onPressed: () =>
+              GoRouter.of(context).push(AppRouter.emailDetectionViewPath),
           btnText: 'Phishing Email Detection',
         ),
       ],
