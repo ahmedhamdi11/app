@@ -28,7 +28,8 @@ class HomeViewBody extends StatelessWidget {
           height: 12.0,
         ),
         DefaultButton(
-          onPressed: () {},
+          onPressed: () =>
+              GoRouter.of(context).push(AppRouter.malwareDetectionViewPath),
           btnText: 'Malware Detection',
         ),
         const SizedBox(
