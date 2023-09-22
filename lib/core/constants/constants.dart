@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kBaseUrl = 'http://192.168.1.102:5000';
+const kBaseUrl = 'https://ahmedhamdi11.azurewebsites.net';
 
 // end points
 const kPhishingEmailEndPoint = '/phising_email_detection';
