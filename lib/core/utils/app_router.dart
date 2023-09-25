@@ -4,7 +4,9 @@ import 'package:app/Features/attack_detection/presentation/views/attack_detectio
 import 'package:app/Features/frauds_detection/data/repos/frauds_detection_repo_impl.dart';
 import 'package:app/Features/frauds_detection/presentation/manager/cubits/cubit/frauds_detection_cubit.dart';
 import 'package:app/Features/frauds_detection/presentation/views/frauds_detection_view.dart';
+import 'package:app/Features/home/presentation/manager/cubits/cubit/splash_view_cubit.dart';
 import 'package:app/Features/home/presentation/views/home_view.dart';
+import 'package:app/Features/home/presentation/views/splash_view.dart';
 import 'package:app/Features/malware_detection/data/repos/malware_detection_reop_impl.dart';
 import 'package:app/Features/malware_detection/presentation/manager/cubits/malware_detection_cubit/malware_detection_cubit.dart';
 import 'package:app/Features/malware_detection/presentation/views/malware_detection_view.dart';
@@ -21,14 +23,29 @@ abstract class AppRouter {
   static const fraudsDetectionViewPath = '/fraudsDetectionViewPath';
   static const attackDetectionViewPath = '/attackDetectionViewPath';
   static const malwareDetectionViewPath = '/malwareDetectionViewPath';
+  static const homeViewPath = '/homeViewPath';
 
   static GoRouter router = GoRouter(
     initialLocation: '/',
     routes: [
-      // hom route
+      // splash view route
       GoRoute(
         path: '/',
-        builder: (context, state) => const HomeView(),
+        builder: (context, state) => BlocProvider(
+          create: (context) => SplashViewCubit()..changeSplashStates(context),
+          child: const SplashView(),
+        ),
+      ),
+
+      // home view route
+      GoRoute(
+        path: homeViewPath,
+        pageBuilder: (context, state) => defaultPageTransitionBuilder(
+          key: state.pageKey,
+          child: const HomeView(),
+          transitionType: TransitionTypeEnum.fade,
+          duration: const Duration(milliseconds: 600),
+        ),
       ),
 
       // email detection route
