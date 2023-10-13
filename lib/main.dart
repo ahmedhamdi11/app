@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       routerConfig: AppRouter.router,
       title: 'App',
       theme: ThemeData(
-        textTheme: GoogleFonts.ptSansTextTheme(),
+        fontFamily: 'jannah',
         appBarTheme: AppBarTheme(
           elevation: 2,
           titleTextStyle: GoogleFonts.lobster(
