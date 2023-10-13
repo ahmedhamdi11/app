@@ -14,9 +14,9 @@ class DefaultButton extends StatelessWidget {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: MaterialButton(
-        height: 50,
+        height: 55,
         shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
         onPressed: onPressed,
         color: kPrimaryColor,
         child: Text(
