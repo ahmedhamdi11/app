@@ -6,10 +6,10 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
-        const SizedBox(height: 120),
-        Expanded(child: const TestAiModelsWidget()),
+        SizedBox(height: 120),
+        Expanded(child: TestAiModelsWidget()),
       ],
     );
   }
