@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:app/core/utils/app_router.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -36,7 +37,13 @@ class SplashViewCubit extends Cubit<SplashViewStates> {
     });
 
     timer4 = Timer(const Duration(milliseconds: 5500), () {
-      GoRouter.of(context).pushReplacement(AppRouter.signInViewPath);
+      FirebaseAuth.instance.authStateChanges().listen((User? user) {
+        if (user == null) {
+          GoRouter.of(context).pushReplacement(AppRouter.signInViewPath);
+        } else {
+          GoRouter.of(context).pushReplacement(AppRouter.homeViewPath);
+        }
+      });
     });
   }
 
