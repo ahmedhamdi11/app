@@ -36,7 +36,7 @@ class SplashViewCubit extends Cubit<SplashViewStates> {
     });
 
     timer4 = Timer(const Duration(milliseconds: 5500), () {
-      GoRouter.of(context).pushReplacement(AppRouter.homeViewPath);
+      GoRouter.of(context).pushReplacement(AppRouter.signInViewPath);
     });
   }
 
