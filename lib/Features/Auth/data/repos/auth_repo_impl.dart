@@ -16,12 +16,10 @@ class AuthRepoImpl implements AuthRepo {
       if (e is DioException) {
         return left(ServerFailure.fromDio(e));
       } else if (e is FirebaseAuthException) {
-        if (e.code == 'user-not-found') {
-          return left(Failure('No user found for this email.'));
-        } else if (e.code == 'wrong-password') {
-          return left(Failure('Wrong password provided for that user.'));
+        if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
+          return left(Failure('invalid email or password'));
         } else {
-          return left(Failure(e.toString()));
+          return left(Failure(e.message!));
         }
       } else {
         return left(Failure(e.toString()));

@@ -1,8 +1,12 @@
 import 'package:app/Features/Auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:app/core/constants/constants.dart';
+import 'package:app/core/functions/show_toast_message.dart';
+import 'package:app/core/utils/app_router.dart';
 import 'package:app/core/widgets/default_button.dart';
 import 'package:app/core/widgets/default_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({
@@ -74,7 +78,13 @@ class SignInForm extends StatelessWidget {
 
           // sign in button
           BlocConsumer<AuthCubit, AuthStates>(
-            listener: (context, state) {},
+            listener: (context, state) {
+              if (state is SignInUserFailureState) {
+                _onSignInFailure(state.errMessage);
+              } else if (state is SignInUserSuccessState) {
+                _onSignInSuccess(state.successMessage, context);
+              }
+            },
             builder: (context, state) {
               if (state is SignInUserLoadingState) {
                 return const SizedBox(
@@ -91,6 +101,21 @@ class SignInForm extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void _onSignInSuccess(String successMessage, BuildContext context) {
+    showToastMessage(
+      successMessage,
+      backgroundColor: kSuccessColor,
+    );
+    GoRouter.of(context).pushReplacement(AppRouter.homeViewPath);
+  }
+
+  void _onSignInFailure(String errMessage) {
+    showToastMessage(
+      errMessage,
+      backgroundColor: kErrorColor,
     );
   }
 }

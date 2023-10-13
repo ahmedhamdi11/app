@@ -10,6 +10,10 @@ const kMalwareDetectionEndPoint = '/malware_detection';
 
 // colors
 const kPrimaryColor = Color(0xff62FCD7);
+const kErrorColor = Color(0xffFE547C);
+const kSuccessColor = Colors.green;
+
+// gradient colors
 const kGradientColor = LinearGradient(
   colors: [
     Color(0xff3A6073),
