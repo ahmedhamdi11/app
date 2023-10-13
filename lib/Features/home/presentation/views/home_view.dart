@@ -1,4 +1,5 @@
 import 'package:app/Features/home/presentation/widgets/home_view_body.dart';
+import 'package:app/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -7,10 +8,14 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text('The App'),
       ),
-      body: const HomeViewBody(),
+      body: Container(
+        decoration: const BoxDecoration(gradient: kGradientColor),
+        child: const HomeViewBody(),
+      ),
     );
   }
 }

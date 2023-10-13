@@ -1,45 +1,15 @@
-import 'package:app/core/utils/app_router.dart';
-import 'package:app/core/widgets/default_button.dart';
+import 'package:app/Features/home/presentation/widgets/test_ai_models_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 28.0),
+    return Column(
       children: [
-        DefaultButton(
-          onPressed: () =>
-              GoRouter.of(context).push(AppRouter.fraudsDetectionViewPath),
-          btnText: 'Fraud Detection',
-        ),
-        const SizedBox(
-          height: 12.0,
-        ),
-        DefaultButton(
-          onPressed: () =>
-              GoRouter.of(context).push(AppRouter.attackDetectionViewPath),
-          btnText: 'Attack Detection',
-        ),
-        const SizedBox(
-          height: 12.0,
-        ),
-        DefaultButton(
-          onPressed: () =>
-              GoRouter.of(context).push(AppRouter.malwareDetectionViewPath),
-          btnText: 'Malware Detection',
-        ),
-        const SizedBox(
-          height: 12.0,
-        ),
-        DefaultButton(
-          onPressed: () =>
-              GoRouter.of(context).push(AppRouter.emailDetectionViewPath),
-          btnText: 'Phishing Email Detection',
-        ),
+        const SizedBox(height: 120),
+        Expanded(child: const TestAiModelsWidget()),
       ],
     );
   }

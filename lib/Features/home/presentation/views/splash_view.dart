@@ -16,56 +16,59 @@ class SplashView extends StatelessWidget {
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: BlocBuilder<SplashViewCubit, SplashViewStates>(
-        builder: (context, state) {
-          return AnimatedAlign(
-            alignment: splashViewCubit.isInCenter
-                ? Alignment.center
-                : Alignment.topCenter,
-            curve: Curves.elasticOut,
-            duration: const Duration(milliseconds: 3100),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 2000),
-              curve: Curves.fastLinearToSlowEaseIn,
-              width: splashViewCubit.isExpanded
-                  ? w
-                  : splashViewCubit.isRectangle
-                      ? 160
-                      : 20,
-              height: splashViewCubit.isExpanded
-                  ? h
-                  : splashViewCubit.isRectangle
-                      ? 60
-                      : 20,
-              decoration: BoxDecoration(
-                color: splashViewCubit.isExpanded
-                    ? Colors.transparent
-                    : kPrimaryColor,
-                borderRadius: BorderRadius.circular(22.0),
-              ),
-              child: splashViewCubit.isRectangle
-                  ? Center(
-                      child: Animate(
-                        onComplete: (controller) =>
-                            Future.delayed(const Duration(milliseconds: 1500))
-                                .then((value) => controller.reverse()),
-                        effects: const [
-                          FadeEffect(duration: Duration(milliseconds: 750)),
-                        ],
-                        child: Text(
-                          'The App',
-                          style: GoogleFonts.lobster(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
+      body: Container(
+        decoration: const BoxDecoration(gradient: kGradientColor),
+        child: BlocBuilder<SplashViewCubit, SplashViewStates>(
+          builder: (context, state) {
+            return AnimatedAlign(
+              alignment: splashViewCubit.isInCenter
+                  ? Alignment.center
+                  : Alignment.topCenter,
+              curve: Curves.elasticOut,
+              duration: const Duration(milliseconds: 3100),
+              child: AnimatedContainer(
+                duration: const Duration(milliseconds: 2000),
+                curve: Curves.fastLinearToSlowEaseIn,
+                width: splashViewCubit.isExpanded
+                    ? w
+                    : splashViewCubit.isRectangle
+                        ? 160
+                        : 20,
+                height: splashViewCubit.isExpanded
+                    ? h
+                    : splashViewCubit.isRectangle
+                        ? 60
+                        : 20,
+                decoration: BoxDecoration(
+                  color: splashViewCubit.isExpanded
+                      ? Colors.transparent
+                      : kPrimaryColor,
+                  borderRadius: BorderRadius.circular(22.0),
+                ),
+                child: splashViewCubit.isRectangle
+                    ? Center(
+                        child: Animate(
+                          onComplete: (controller) =>
+                              Future.delayed(const Duration(milliseconds: 1500))
+                                  .then((value) => controller.reverse()),
+                          effects: const [
+                            FadeEffect(duration: Duration(milliseconds: 750)),
+                          ],
+                          child: Text(
+                            'The App',
+                            style: GoogleFonts.lobster(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                  : const SizedBox(),
-            ),
-          );
-        },
+                      )
+                    : const SizedBox(),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

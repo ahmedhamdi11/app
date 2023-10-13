@@ -45,6 +45,7 @@ abstract class AppRouter {
         pageBuilder: (context, state) => defaultPageTransitionBuilder(
           key: state.pageKey,
           transitionType: TransitionTypeEnum.fade,
+          duration: const Duration(milliseconds: 650),
           child: const SignInView(),
         ),
       ),
@@ -56,7 +57,7 @@ abstract class AppRouter {
           key: state.pageKey,
           child: const HomeView(),
           transitionType: TransitionTypeEnum.fade,
-          duration: const Duration(milliseconds: 600),
+          duration: const Duration(milliseconds: 650),
         ),
       ),
 

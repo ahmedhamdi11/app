@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'jannah',
         appBarTheme: AppBarTheme(
           elevation: 2,
+          backgroundColor: Colors.transparent,
           titleTextStyle: GoogleFonts.lobster(
             fontSize: 20,
           ),
