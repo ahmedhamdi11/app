@@ -13,6 +13,13 @@ class AuthCubit extends Cubit<AuthStates> {
   late String email;
   late String password;
 
+  bool isHiddenPassword = true;
+
+  void togglePasswordVisibility() {
+    isHiddenPassword = !isHiddenPassword;
+    emit(TogglePasswordVisibilityState());
+  }
+
   Future<void> signInUser() async {
     if (formKey.currentState!.validate()) {
       emit(SignInUserLoadingState());

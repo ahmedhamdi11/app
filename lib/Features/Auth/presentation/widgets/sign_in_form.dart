@@ -40,29 +40,35 @@ class SignInForm extends StatelessWidget {
           const SizedBox(height: 12.0),
 
           // password field
-          DefaultTextField(
-            hintText: 'Password',
-            onChanged: (value) {
-              cubit.password = value;
-            },
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please enter your password.';
-              } else {
-                return null;
-              }
-            },
-            isHiddenPassword: true,
-            suffix: Padding(
-              padding: const EdgeInsetsDirectional.only(end: 8.0),
-              child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.visibility_off,
-                  size: 22.0,
+          BlocBuilder<AuthCubit, AuthStates>(
+            builder: (context, state) {
+              return DefaultTextField(
+                hintText: 'Password',
+                onChanged: (value) {
+                  cubit.password = value;
+                },
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your password.';
+                  } else {
+                    return null;
+                  }
+                },
+                isHiddenPassword: cubit.isHiddenPassword,
+                suffix: Padding(
+                  padding: const EdgeInsetsDirectional.only(end: 8.0),
+                  child: IconButton(
+                    onPressed: () => cubit.togglePasswordVisibility(),
+                    icon: Icon(
+                      cubit.isHiddenPassword
+                          ? Icons.visibility_off
+                          : Icons.visibility,
+                      size: 22.0,
+                    ),
+                  ),
                 ),
-              ),
-            ),
+              );
+            },
           ),
 
           // forgot password button

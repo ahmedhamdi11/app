@@ -4,6 +4,8 @@ class AuthStates {}
 
 class AuthInitialState extends AuthStates {}
 
+class TogglePasswordVisibilityState extends AuthStates {}
+
 class SignInUserLoadingState extends AuthStates {}
 
 class SignInUserSuccessState extends AuthStates {
