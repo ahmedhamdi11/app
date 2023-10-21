@@ -26,8 +26,7 @@ class ServerFailure extends Failure {
         return ServerFailure(
             'The connection to the server could not be established');
       case DioExceptionType.badResponse:
-        return ServerFailure.fromResponse(
-            dioError.response!.statusCode!, dioError.response!.data);
+        return ServerFailure.fromResponse(dioError.response!.statusCode!);
       case DioExceptionType.cancel:
         return ServerFailure('Request Canceled');
       case DioExceptionType.connectionError:
@@ -45,9 +44,13 @@ class ServerFailure extends Failure {
     }
   }
 
-  factory ServerFailure.fromResponse(int statusCode, dynamic response) {
-    if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(response['error']['message']);
+  factory ServerFailure.fromResponse(int statusCode) {
+    if (statusCode == 400) {
+      return ServerFailure('Invalid Request');
+    } else if (statusCode == 401) {
+      return ServerFailure('Unauthorized Request');
+    } else if (statusCode == 403) {
+      return ServerFailure('Site Disabled');
     } else if (statusCode == 404) {
       return ServerFailure('Request Not Found,please try later!');
     } else if (statusCode == 500) {
