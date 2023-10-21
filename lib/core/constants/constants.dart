@@ -16,8 +16,8 @@ const kSuccessColor = Colors.green;
 // gradient colors
 const kGradientColor = LinearGradient(
   colors: [
-    Color(0xff071A2D),
-    Color(0xff1B2725),
+    Color(0xff071A3D),
+    Color(0xff071A1D),
   ],
   begin: Alignment.topCenter,
   end: Alignment.bottomCenter,
