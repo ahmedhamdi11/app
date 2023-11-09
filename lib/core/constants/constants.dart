@@ -9,16 +9,9 @@ const kAttackDetectionEndPoint = '/attack_detection';
 const kMalwareDetectionEndPoint = '/malware_detection';
 
 // colors
-const kPrimaryColor = Color(0xff62FCD7);
-const kErrorColor = Color(0xffFE547C);
-const kSuccessColor = Colors.green;
-
-// gradient colors
-const kGradientColor = LinearGradient(
-  colors: [
-    Color(0xff071A3D),
-    Color(0xff071A1D),
-  ],
-  begin: Alignment.topCenter,
-  end: Alignment.bottomCenter,
-);
+const kBackgroundColor = Color(0xff160D52);
+const kPrimaryColor = Color(0xff43ED9D);
+const kCardColor = Color(0xff241968);
+const kCardColor2 = Color(0xff2D9AE2);
+const kRedColor = Color(0xffFE4C78);
+const kWhiteColor = Colors.white;

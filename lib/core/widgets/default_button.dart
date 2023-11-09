@@ -1,4 +1,5 @@
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class DefaultButton extends StatelessWidget {
@@ -15,13 +16,14 @@ class DefaultButton extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: MaterialButton(
         height: 55,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(25.0)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(25.0),
+        ),
         onPressed: onPressed,
         color: kPrimaryColor,
         child: Text(
           btnText,
-          style: const TextStyle(color: Colors.black),
+          style: AppStyles.text20,
         ),
       ),
     );

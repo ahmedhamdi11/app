@@ -43,19 +43,16 @@ class DefaultTextField extends StatelessWidget {
           borderSide: BorderSide.none,
         ),
         filled: true,
-        fillColor: fillColor ?? kPrimaryColor.withOpacity(0.18),
+        fillColor: fillColor ?? kPrimaryColor.withOpacity(0.15),
         hintText: hintText,
         hintStyle: const TextStyle(fontSize: 14.5),
         prefixIcon: prefix,
         suffixIcon: suffix,
         isDense: true,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 18, vertical: 18),
-
-        // suffixIconConstraints: BoxConstraints(
-        //   minHeight: 35,
-        //   minWidth: 48,
-        // ),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 22,
+          vertical: 16,
+        ),
       ),
     );
   }

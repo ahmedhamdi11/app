@@ -113,7 +113,7 @@ class SignInForm extends StatelessWidget {
   void _onSignInSuccess(String successMessage, BuildContext context) {
     showToastMessage(
       successMessage,
-      backgroundColor: kSuccessColor,
+      backgroundColor: kRedColor,
     );
     GoRouter.of(context).pushReplacement(AppRouter.homeViewPath);
   }
@@ -121,7 +121,7 @@ class SignInForm extends StatelessWidget {
   void _onSignInFailure(String errMessage) {
     showToastMessage(
       errMessage,
-      backgroundColor: kErrorColor,
+      backgroundColor: kRedColor,
     );
   }
 }

@@ -7,15 +7,15 @@ import 'package:app/Features/attack_detection/presentation/views/attack_detectio
 import 'package:app/Features/frauds_detection/data/repos/frauds_detection_repo_impl.dart';
 import 'package:app/Features/frauds_detection/presentation/manager/cubits/cubit/frauds_detection_cubit.dart';
 import 'package:app/Features/frauds_detection/presentation/views/frauds_detection_view.dart';
-import 'package:app/Features/home/presentation/manager/cubits/cubit/splash_view_cubit.dart';
 import 'package:app/Features/home/presentation/views/home_view.dart';
-import 'package:app/Features/home/presentation/views/splash_view.dart';
 import 'package:app/Features/malware_detection/data/repos/malware_detection_reop_impl.dart';
 import 'package:app/Features/malware_detection/presentation/manager/cubits/malware_detection_cubit/malware_detection_cubit.dart';
 import 'package:app/Features/malware_detection/presentation/views/malware_detection_view.dart';
 import 'package:app/Features/phishing_email_detection/data/repos/email_detection_repo_impl.dart';
 import 'package:app/Features/phishing_email_detection/presentation/manager/cubit/phishing_email_cubit.dart';
 import 'package:app/Features/phishing_email_detection/presentation/views/email_detection_view.dart';
+import 'package:app/Features/splash/presentation/manager/cubit/splash_view_cubit.dart';
+import 'package:app/Features/splash/presentation/views/splash_view.dart';
 import 'package:app/core/functions/default_page_transition_builder.dart';
 import 'package:app/core/services/api_services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

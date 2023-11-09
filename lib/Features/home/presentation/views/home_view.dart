@@ -25,10 +25,7 @@ class HomeView extends StatelessWidget {
           )
         ],
       ),
-      body: Container(
-        decoration: const BoxDecoration(gradient: kGradientColor),
-        child: const HomeViewBody(),
-      ),
+      body: const HomeViewBody(),
     );
   }
 }

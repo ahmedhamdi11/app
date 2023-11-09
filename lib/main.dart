@@ -1,9 +1,8 @@
-import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_router.dart';
+import 'package:app/core/utils/app_themes.dart';
 import 'package:app/observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -25,24 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
       title: 'App',
-      theme: ThemeData(
-        fontFamily: 'jannah',
-        appBarTheme: AppBarTheme(
-          elevation: 2,
-          backgroundColor: Colors.transparent,
-          titleTextStyle: GoogleFonts.lobster(
-            fontSize: 20,
-          ),
-        ),
-        dialogTheme: const DialogTheme(
-          surfaceTintColor: Colors.black,
-        ),
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: kPrimaryColor,
-          brightness: Brightness.dark,
-        ),
-        useMaterial3: true,
-      ),
+      theme: AppThemes.darkTheme,
     );
   }
 }
