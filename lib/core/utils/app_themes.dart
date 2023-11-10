@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 abstract class AppThemes {
   static ThemeData darkTheme = ThemeData(
     // text theme
-    textTheme: GoogleFonts.ibmPlexSansArabicTextTheme(),
+    textTheme: GoogleFonts.rubikTextTheme(),
 
     // dialog theme
     dialogTheme: const DialogTheme(

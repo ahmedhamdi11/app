@@ -23,7 +23,7 @@ class DefaultButton extends StatelessWidget {
         color: kPrimaryColor,
         child: Text(
           btnText,
-          style: AppStyles.text20,
+          style: AppStyles.text18,
         ),
       ),
     );
