@@ -27,7 +27,7 @@ class DefaultTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     OutlineInputBorder outlineInputBorder = OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8.0),
+      borderRadius: BorderRadius.circular(12.0),
       borderSide: const BorderSide(
         color: kWhiteColor,
       ),

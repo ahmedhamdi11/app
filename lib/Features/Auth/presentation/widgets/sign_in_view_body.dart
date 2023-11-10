@@ -1,4 +1,5 @@
 import 'package:app/Features/Auth/presentation/widgets/sign_in_form.dart';
+import 'package:app/Features/Auth/presentation/widgets/sign_in_with_googl_button.dart';
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -32,11 +33,13 @@ class SignInViewBody extends StatelessWidget {
               const SignInForm(),
 
               const SizedBox(height: 48),
+
+              // social logins
               Row(
                 children: [
                   Expanded(
                     child: Divider(
-                      endIndent: 16,
+                      endIndent: 12,
                       color: kWhiteColor.withOpacity(0.5),
                     ),
                   ),
@@ -46,43 +49,18 @@ class SignInViewBody extends StatelessWidget {
                   ),
                   Expanded(
                     child: Divider(
-                      indent: 16,
+                      indent: 12,
                       color: kWhiteColor.withOpacity(0.5),
                     ),
                   ),
                 ],
               ),
+
               const SizedBox(height: 16),
-              InkWell(
-                onTap: () {},
-                borderRadius: BorderRadius.circular(25),
-                child: Container(
-                  padding: const EdgeInsets.all(12),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(25),
-                    border: Border.all(color: kWhiteColor),
-                  ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.asset(
-                        'assets/images/google_icon.png',
-                        width: 28,
-                        height: 28,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        'SIGN IN WITH GOOGLE',
-                        style: AppStyles.text18.copyWith(color: kWhiteColor),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 26,
-              ),
+
+              const SignInWithGoogleButton(),
+
+              const SizedBox(height: 26),
             ],
           ),
         ),

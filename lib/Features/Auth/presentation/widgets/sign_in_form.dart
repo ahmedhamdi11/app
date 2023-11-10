@@ -64,6 +64,7 @@ class SignInForm extends StatelessWidget {
                           ? Icons.visibility_off
                           : Icons.visibility,
                       size: 22.0,
+                      color: kWhiteColor,
                     ),
                   ),
                 ),
