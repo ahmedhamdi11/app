@@ -36,7 +36,7 @@ class SplashViewCubit extends Cubit<SplashViewStates> {
       emit(AnimationChangedState());
     });
 
-    timer4 = Timer(const Duration(milliseconds: 5800), () {
+    timer4 = Timer(const Duration(milliseconds: 5650), () {
       FirebaseAuth.instance.authStateChanges().listen((User? user) {
         if (user == null) {
           GoRouter.of(context).pushReplacement(AppRouter.signInViewPath);
