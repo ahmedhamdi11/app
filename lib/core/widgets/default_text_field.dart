@@ -1,4 +1,5 @@
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class DefaultTextField extends StatelessWidget {
@@ -11,9 +12,7 @@ class DefaultTextField extends StatelessWidget {
     this.controller,
     this.onChanged,
     this.prefix,
-    this.fillColor,
     this.keyboardType,
-    // this.textInputColor = kDarkTextColor,
   });
 
   final String? hintText;
@@ -23,12 +22,16 @@ class DefaultTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final void Function(String)? onChanged;
-  final Color? fillColor;
   final TextInputType? keyboardType;
-  // final Color textInputColor;
 
   @override
   Widget build(BuildContext context) {
+    OutlineInputBorder outlineInputBorder = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8.0),
+      borderSide: const BorderSide(
+        color: kWhiteColor,
+      ),
+    );
     return TextFormField(
       obscureText: isHiddenPassword,
       validator: validator,
@@ -36,16 +39,13 @@ class DefaultTextField extends StatelessWidget {
       onChanged: onChanged,
       keyboardType: keyboardType,
       style: const TextStyle(color: Colors.white),
+
       // text field decoration
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(25.0),
-          borderSide: BorderSide.none,
-        ),
-        filled: true,
-        fillColor: fillColor ?? kPrimaryColor.withOpacity(0.15),
+        border: outlineInputBorder,
+        enabledBorder: outlineInputBorder,
         hintText: hintText,
-        hintStyle: const TextStyle(fontSize: 14.5),
+        hintStyle: AppStyles.text14,
         prefixIcon: prefix,
         suffixIcon: suffix,
         isDense: true,

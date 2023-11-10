@@ -80,7 +80,7 @@ class SignInForm extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(height: 16.0),
+          const SizedBox(height: 8.0),
 
           // sign in button
           BlocConsumer<AuthCubit, AuthStates>(

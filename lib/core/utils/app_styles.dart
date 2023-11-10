@@ -32,4 +32,11 @@ class AppStyles {
     color: kWhiteColor,
     height: 1.2,
   );
+
+  static const text34 = TextStyle(
+    fontSize: 34,
+    fontWeight: FontWeight.w500,
+    color: kWhiteColor,
+    height: 1.2,
+  );
 }
