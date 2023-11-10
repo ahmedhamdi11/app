@@ -38,8 +38,9 @@ class AppName extends StatelessWidget {
                     ? 65
                     : 25,
             decoration: BoxDecoration(
-              color:
-                  splashViewCubit.isExpanded ? kBackgroundColor : kCardColor2,
+              color: splashViewCubit.isExpanded
+                  ? kBackgroundColor
+                  : kCardColor2.withOpacity(0.8),
               borderRadius: BorderRadius.circular(30.0),
             ),
             child: splashViewCubit.isRectangle

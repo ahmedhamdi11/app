@@ -9,7 +9,7 @@ class OnBoardingView extends StatelessWidget {
       body: PageView.builder(
         itemCount: 3,
         itemBuilder: (context, index) {
-          return Column(
+          return const Column(
             children: [],
           );
         },

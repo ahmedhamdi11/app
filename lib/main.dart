@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter.router,
-      title: 'App',
+      title: 'Secure Shield',
       theme: AppThemes.darkTheme,
     );
   }

@@ -8,7 +8,7 @@ import 'package:app/Features/frauds_detection/data/repos/frauds_detection_repo_i
 import 'package:app/Features/frauds_detection/presentation/manager/cubits/cubit/frauds_detection_cubit.dart';
 import 'package:app/Features/frauds_detection/presentation/views/frauds_detection_view.dart';
 import 'package:app/Features/home/presentation/views/home_view.dart';
-import 'package:app/Features/malware_detection/data/repos/malware_detection_reop_impl.dart';
+import 'package:app/Features/malware_detection/data/repos/malware_detection_repo_impl.dart';
 import 'package:app/Features/malware_detection/presentation/manager/cubits/malware_detection_cubit/malware_detection_cubit.dart';
 import 'package:app/Features/malware_detection/presentation/views/malware_detection_view.dart';
 import 'package:app/Features/phishing_email_detection/data/repos/email_detection_repo_impl.dart';
