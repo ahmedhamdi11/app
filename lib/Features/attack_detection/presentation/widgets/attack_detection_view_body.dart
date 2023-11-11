@@ -5,7 +5,6 @@ import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_alert_dialog.dart';
 import 'package:app/core/widgets/default_button.dart';
 import 'package:app/core/widgets/prediction_result_view.dart';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';

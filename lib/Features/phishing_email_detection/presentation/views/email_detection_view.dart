@@ -1,6 +1,8 @@
 import 'package:app/Features/phishing_email_detection/presentation/manager/cubit/phishing_email_cubit.dart';
 import 'package:app/Features/phishing_email_detection/presentation/widgets/email_detection_body.dart';
+import 'package:app/core/constants/constants.dart';
 import 'package:app/core/functions/show_failure_dialog.dart';
+import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_alert_dialog.dart';
 import 'package:app/core/widgets/prediction_result_view.dart';
 import 'package:flutter/material.dart';
@@ -33,13 +35,16 @@ class EmailDetectionView extends StatelessWidget {
     return showDialog(
       context: context,
       builder: (context) => DefaultAlertDialog(
-        title: const Text('Result'),
+        title: const Text(
+          'Result',
+          style: AppStyles.text16,
+        ),
         content: PredictionResultView(
           prediction: state.prediction.prediction,
           predictionAccuracy: state.prediction.predictionAccuracy,
           predictionColor: state.prediction.prediction == 'Safe Email'
-              ? Colors.green
-              : Colors.red,
+              ? kPrimaryColor
+              : kRedColor,
         ),
       ),
     );
