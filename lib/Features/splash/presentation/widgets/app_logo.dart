@@ -10,10 +10,10 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const Alignment(0, -0.3),
+      alignment: const Alignment(0, -0.25),
       child: Animate(
         effects: const [
-          FadeEffect(duration: Duration(milliseconds: 800)),
+          FadeEffect(duration: Duration(milliseconds: 850)),
         ],
         child: SvgPicture.asset(
           'assets/images/secure_shield_logo.svg',

@@ -116,7 +116,7 @@ class SignInForm extends StatelessWidget {
       successMessage,
       backgroundColor: kRedColor,
     );
-    GoRouter.of(context).pushReplacement(AppRouter.homeViewPath);
+    GoRouter.of(context).pushReplacement(AppRouter.mainPageViewPath);
   }
 
   void _onSignInFailure(String errMessage) {

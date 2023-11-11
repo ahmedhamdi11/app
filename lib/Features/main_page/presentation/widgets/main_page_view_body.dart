@@ -1,4 +1,4 @@
-import 'package:app/Features/home/presentation/widgets/test_ai_models_widget.dart';
+import 'package:app/Features/main_page/presentation/widgets/test_ai_models_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {

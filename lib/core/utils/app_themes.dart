@@ -18,6 +18,9 @@ abstract class AppThemes {
       brightness: Brightness.dark,
     ),
 
+    // app bar theme
+    appBarTheme: const AppBarTheme(backgroundColor: kBackgroundColor),
+
     scaffoldBackgroundColor: kBackgroundColor,
 
     useMaterial3: true,

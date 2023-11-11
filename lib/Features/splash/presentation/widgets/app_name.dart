@@ -25,7 +25,7 @@ class AppName extends StatelessWidget {
           curve: Curves.elasticOut,
           duration: const Duration(milliseconds: 3100),
           child: AnimatedContainer(
-            duration: const Duration(milliseconds: 1800),
+            duration: const Duration(milliseconds: 1700),
             curve: Curves.fastLinearToSlowEaseIn,
             width: splashViewCubit.isExpanded
                 ? w
@@ -52,7 +52,7 @@ class AppName extends StatelessWidget {
                         (value) => controller.reverse(),
                       ),
                       effects: const [
-                        FadeEffect(duration: Duration(milliseconds: 800)),
+                        FadeEffect(duration: Duration(milliseconds: 850)),
                       ],
                       child: Text(
                         'Secure Shield',

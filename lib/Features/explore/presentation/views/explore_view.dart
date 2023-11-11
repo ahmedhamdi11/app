@@ -2,8 +2,8 @@ import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class ExploreView extends StatelessWidget {
+  const ExploreView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
       ],
       child: const Center(
         child: Text(
-          'Home View',
+          'Explore View',
           style: AppStyles.text16,
         ),
       ),

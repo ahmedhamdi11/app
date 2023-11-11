@@ -41,7 +41,7 @@ class SplashViewCubit extends Cubit<SplashViewStates> {
         if (user == null) {
           GoRouter.of(context).pushReplacement(AppRouter.signInViewPath);
         } else {
-          GoRouter.of(context).pushReplacement(AppRouter.homeViewPath);
+          GoRouter.of(context).pushReplacement(AppRouter.mainPageViewPath);
         }
       });
     });

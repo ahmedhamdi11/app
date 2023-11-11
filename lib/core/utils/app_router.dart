@@ -7,7 +7,8 @@ import 'package:app/Features/attack_detection/presentation/views/attack_detectio
 import 'package:app/Features/frauds_detection/data/repos/frauds_detection_repo_impl.dart';
 import 'package:app/Features/frauds_detection/presentation/manager/cubits/cubit/frauds_detection_cubit.dart';
 import 'package:app/Features/frauds_detection/presentation/views/frauds_detection_view.dart';
-import 'package:app/Features/home/presentation/views/home_view.dart';
+import 'package:app/Features/main_page/presentation/manager/cubits/cubit/main_page_cubit.dart';
+import 'package:app/Features/main_page/presentation/views/main_page_view.dart';
 import 'package:app/Features/malware_detection/data/repos/malware_detection_repo_impl.dart';
 import 'package:app/Features/malware_detection/presentation/manager/cubits/malware_detection_cubit/malware_detection_cubit.dart';
 import 'package:app/Features/malware_detection/presentation/views/malware_detection_view.dart';
@@ -27,7 +28,7 @@ abstract class AppRouter {
   static const fraudsDetectionViewPath = '/fraudsDetectionViewPath';
   static const attackDetectionViewPath = '/attackDetectionViewPath';
   static const malwareDetectionViewPath = '/malwareDetectionViewPath';
-  static const homeViewPath = '/homeViewPath';
+  static const mainPageViewPath = '/mainPageViewPath';
 
   static GoRouter router = GoRouter(
     initialLocation: '/',
@@ -57,10 +58,13 @@ abstract class AppRouter {
 
       // home view route
       GoRoute(
-        path: homeViewPath,
+        path: mainPageViewPath,
         pageBuilder: (context, state) => defaultPageTransitionBuilder(
           key: state.pageKey,
-          child: const HomeView(),
+          child: BlocProvider(
+            create: (context) => MainPageCubit(),
+            child: const MainPageView(),
+          ),
           transitionType: TransitionTypeEnum.fade,
           duration: const Duration(milliseconds: 650),
         ),
