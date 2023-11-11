@@ -5,6 +5,7 @@ import 'package:app/core/functions/show_toast_message.dart';
 import 'package:app/core/utils/app_router.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/svg_icon_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -57,11 +58,11 @@ class UserAccountDetails extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Ahmed Hamdi',
+                FirebaseAuth.instance.currentUser!.displayName ?? 'Username',
                 style: AppStyles.text18.copyWith(color: kWhiteColor),
               ),
               Text(
-                'ahmedhamdi@gmail.com',
+                FirebaseAuth.instance.currentUser!.email ?? 'email@google.com',
                 style: AppStyles.text14.copyWith(
                   color: kWhiteColor.withOpacity(0.7),
                 ),
