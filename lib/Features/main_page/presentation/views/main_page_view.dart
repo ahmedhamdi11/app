@@ -3,6 +3,7 @@ import 'package:app/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iconly/iconly.dart';
 
 class MainPageView extends StatelessWidget {
   const MainPageView({super.key});
@@ -13,6 +14,7 @@ class MainPageView extends StatelessWidget {
     return BlocBuilder<MainPageCubit, MainPageStates>(
       builder: (context, state) {
         return Scaffold(
+          extendBody: true,
           appBar: AppBar(
             title: const Text('Secure Shield'),
           ),
@@ -24,10 +26,22 @@ class MainPageView extends StatelessWidget {
             animationDuration: const Duration(milliseconds: 400),
             onTap: (value) => cubit.onViewChanges(value),
             items: [
-              Icon(Icons.home),
-              Icon(Icons.home),
-              Icon(Icons.home),
-              Icon(Icons.home),
+              Icon(
+                IconlyBroken.home,
+                color: cubit.currentView == 0 ? kPrimaryColor : null,
+              ),
+              Icon(
+                Icons.explore_outlined,
+                color: cubit.currentView == 1 ? kPrimaryColor : null,
+              ),
+              Icon(
+                IconlyBroken.activity,
+                color: cubit.currentView == 2 ? kPrimaryColor : null,
+              ),
+              Icon(
+                IconlyBroken.setting,
+                color: cubit.currentView == 3 ? kPrimaryColor : null,
+              ),
             ],
           ),
         );
