@@ -19,3 +19,18 @@ class SignInUserFailureState extends AuthStates {
 
   SignInUserFailureState(this.errMessage);
 }
+
+// sign in with google states
+class SignInWithGoogleLoadingState extends AuthStates {}
+
+class SignInWithGoogleSuccessState extends AuthStates {
+  final UserCredential userCredential;
+
+  SignInWithGoogleSuccessState(this.userCredential);
+}
+
+class SignInWithGoogleFailureState extends AuthStates {
+  final String errMessage;
+
+  SignInWithGoogleFailureState(this.errMessage);
+}

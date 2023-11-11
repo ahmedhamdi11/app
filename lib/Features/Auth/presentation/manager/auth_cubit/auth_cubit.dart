@@ -1,4 +1,5 @@
 import 'package:app/Features/Auth/data/repos/auth_repo.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,5 +31,18 @@ class AuthCubit extends Cubit<AuthStates> {
         (succussMessage) => emit(SignInUserSuccessState(succussMessage)),
       );
     }
+  }
+
+  Future<void> singInWithGoogle() async {
+    emit(SignInWithGoogleLoadingState());
+    var result = await authRepo.singInWithGoogle();
+
+    result.fold(
+      (failure) {
+        print(failure.errMessage);
+        emit(SignInUserFailureState(failure.errMessage));
+      },
+      (userCredential) => emit(SignInWithGoogleSuccessState(userCredential)),
+    );
   }
 }

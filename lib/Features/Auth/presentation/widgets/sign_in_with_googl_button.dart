@@ -1,6 +1,8 @@
+import 'package:app/Features/Auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SignInWithGoogleButton extends StatelessWidget {
@@ -11,7 +13,7 @@ class SignInWithGoogleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => BlocProvider.of<AuthCubit>(context).singInWithGoogle(),
       borderRadius: BorderRadius.circular(25),
       child: Container(
         padding: const EdgeInsets.all(12),
