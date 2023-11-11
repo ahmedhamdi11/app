@@ -1,6 +1,7 @@
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class SignInWithGoogleButton extends StatelessWidget {
   const SignInWithGoogleButton({
@@ -22,8 +23,8 @@ class SignInWithGoogleButton extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(
-              'assets/images/google_icon.png',
+            SvgPicture.asset(
+              'assets/icons/google_icon.svg',
               width: 25,
               height: 25,
             ),

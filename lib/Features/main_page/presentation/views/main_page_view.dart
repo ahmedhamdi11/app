@@ -1,9 +1,9 @@
 import 'package:app/Features/main_page/presentation/manager/cubits/cubit/main_page_cubit.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/widgets/svg_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:iconly/iconly.dart';
 
 class MainPageView extends StatelessWidget {
   const MainPageView({super.key});
@@ -26,21 +26,21 @@ class MainPageView extends StatelessWidget {
             animationDuration: const Duration(milliseconds: 400),
             onTap: (value) => cubit.onViewChanges(value),
             items: [
-              Icon(
-                IconlyBroken.home,
-                color: cubit.currentView == 0 ? kPrimaryColor : null,
+              SvgIconWidget(
+                iconPath: 'assets/icons/home_icon.svg',
+                iconColor: cubit.currentView == 0 ? kPrimaryColor : kWhiteColor,
               ),
-              Icon(
-                Icons.explore_outlined,
-                color: cubit.currentView == 1 ? kPrimaryColor : null,
+              SvgIconWidget(
+                iconPath: 'assets/icons/explore_icon.svg',
+                iconColor: cubit.currentView == 1 ? kPrimaryColor : kWhiteColor,
               ),
-              Icon(
-                IconlyBroken.activity,
-                color: cubit.currentView == 2 ? kPrimaryColor : null,
+              SvgIconWidget(
+                iconPath: 'assets/icons/test_ai_icon.svg',
+                iconColor: cubit.currentView == 2 ? kPrimaryColor : kWhiteColor,
               ),
-              Icon(
-                IconlyBroken.setting,
-                color: cubit.currentView == 3 ? kPrimaryColor : null,
+              SvgIconWidget(
+                iconPath: 'assets/icons/account_icon.svg',
+                iconColor: cubit.currentView == 3 ? kPrimaryColor : kWhiteColor,
               ),
             ],
           ),
