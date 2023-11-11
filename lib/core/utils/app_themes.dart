@@ -1,4 +1,5 @@
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -19,7 +20,11 @@ abstract class AppThemes {
     ),
 
     // app bar theme
-    appBarTheme: const AppBarTheme(backgroundColor: kBackgroundColor),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: kBackgroundColor,
+      titleTextStyle: AppStyles.text22,
+      scrolledUnderElevation: 0,
+    ),
 
     scaffoldBackgroundColor: kBackgroundColor,
 

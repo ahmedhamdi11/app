@@ -1,5 +1,6 @@
 import 'package:app/Features/main_page/presentation/manager/cubits/cubit/main_page_cubit.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/widgets/default_animated_switcher.dart';
 import 'package:app/core/widgets/svg_icon_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -16,9 +17,17 @@ class MainPageView extends StatelessWidget {
         return Scaffold(
           extendBody: true,
           appBar: AppBar(
-            title: const Text('Secure Shield'),
+            title: DefaultAnimatedSwitcher(
+              child: SizedBox(
+                key: UniqueKey(),
+                width: double.infinity,
+                child: Text(
+                  cubit.appViews[cubit.currentView].title,
+                ),
+              ),
+            ),
           ),
-          body: cubit.views[cubit.currentView],
+          body: cubit.appViews[cubit.currentView].view,
           bottomNavigationBar: CurvedNavigationBar(
             backgroundColor: Colors.transparent,
             buttonBackgroundColor: kCardColor,
