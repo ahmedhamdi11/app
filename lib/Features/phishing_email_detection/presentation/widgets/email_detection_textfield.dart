@@ -1,3 +1,5 @@
+import 'package:app/core/constants/constants.dart';
+import 'package:app/core/widgets/default_text_field.dart';
 import 'package:flutter/material.dart';
 
 class EmailDetectionTextField extends StatefulWidget {
@@ -29,24 +31,17 @@ class _EmailDetectionTextFieldState extends State<EmailDetectionTextField> {
       clipBehavior: Clip.none,
       alignment: Alignment.topRight,
       children: [
-        TextField(
-          controller: _controller,
+        DefaultTextField(
           onChanged: widget.onChanged,
+          controller: _controller,
           maxLines: 6,
-          textInputAction: TextInputAction.done,
-          decoration: InputDecoration(
-            hintText: 'Enter an email to Check',
-            hintStyle: const TextStyle(color: Colors.grey),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-          ),
+          hintText: 'Enter an email to scan...',
         ),
         Positioned(
           top: -22,
           right: -22,
           child: MaterialButton(
-            color: Colors.red.withOpacity(0.9),
+            color: kRedColor,
             shape: const CircleBorder(),
             onPressed: () => _controller.clear(),
             child: const Icon(

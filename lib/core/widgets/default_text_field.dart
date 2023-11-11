@@ -13,6 +13,7 @@ class DefaultTextField extends StatelessWidget {
     this.onChanged,
     this.prefix,
     this.keyboardType,
+    this.maxLines,
   });
 
   final String? hintText;
@@ -23,6 +24,7 @@ class DefaultTextField extends StatelessWidget {
   final TextEditingController? controller;
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class DefaultTextField extends StatelessWidget {
       ),
     );
     return TextFormField(
+      maxLines: maxLines,
       obscureText: isHiddenPassword,
       validator: validator,
       controller: controller,

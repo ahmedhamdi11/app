@@ -9,7 +9,7 @@ abstract class AppThemes {
 
     // dialog theme
     dialogTheme: const DialogTheme(
-      surfaceTintColor: Colors.black,
+      backgroundColor: kBackgroundColor,
     ),
 
     // color scheme

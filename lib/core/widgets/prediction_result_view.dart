@@ -1,3 +1,4 @@
+import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class PredictionResultView extends StatelessWidget {
@@ -18,19 +19,23 @@ class PredictionResultView extends StatelessWidget {
       children: [
         Row(
           children: [
-            const Text('prediction: '),
+            const Text(
+              'prediction: ',
+              style: AppStyles.text14,
+            ),
             Text(
               prediction,
-              style: TextStyle(
-                color: predictionColor,
-              ),
+              style: AppStyles.text14.copyWith(color: predictionColor),
             )
           ],
         ),
         const SizedBox(
           height: 8.0,
         ),
-        Text('prediction accuracy: $predictionAccuracy'),
+        Text(
+          'prediction accuracy: $predictionAccuracy',
+          style: AppStyles.text14,
+        ),
       ],
     );
   }
