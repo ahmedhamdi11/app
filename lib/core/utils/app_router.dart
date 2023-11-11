@@ -1,5 +1,3 @@
-import 'package:app/Features/Auth/data/repos/auth_repo_impl.dart';
-import 'package:app/Features/Auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:app/Features/Auth/presentation/views/sign_in_view.dart';
 import 'package:app/Features/attack_detection/data/repos/attack_detection_repo_impl.dart';
 import 'package:app/Features/attack_detection/presentation/manager/cubits/attack_detection_cubit/attack_detection_cubit.dart';
@@ -49,10 +47,7 @@ abstract class AppRouter {
           key: state.pageKey,
           transitionType: TransitionTypeEnum.fade,
           duration: const Duration(milliseconds: 650),
-          child: BlocProvider(
-            create: (context) => AuthCubit(AuthRepoImpl()),
-            child: const SignInView(),
-          ),
+          child: const SignInView(),
         ),
       ),
 

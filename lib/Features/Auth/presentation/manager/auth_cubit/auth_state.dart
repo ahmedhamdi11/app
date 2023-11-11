@@ -34,3 +34,18 @@ class SignInWithGoogleFailureState extends AuthStates {
 
   SignInWithGoogleFailureState(this.errMessage);
 }
+
+// sign out states
+class SignOutUserLoadingState extends AuthStates {}
+
+class SignOutUserFailureState extends AuthStates {
+  final String errMessage;
+
+  SignOutUserFailureState(this.errMessage);
+}
+
+class SignOutUserSuccessState extends AuthStates {
+  final String successMessage;
+
+  SignOutUserSuccessState(this.successMessage);
+}

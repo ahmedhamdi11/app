@@ -1,3 +1,5 @@
+import 'package:app/Features/Auth/data/repos/auth_repo_impl.dart';
+import 'package:app/Features/Auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:app/core/utils/app_router.dart';
 import 'package:app/core/utils/app_themes.dart';
 import 'package:app/observer.dart';
@@ -20,11 +22,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: AppRouter.router,
-      title: 'Secure Shield',
-      theme: AppThemes.darkTheme,
+    return BlocProvider(
+      create: (context) => AuthCubit(AuthRepoImpl()),
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        routerConfig: AppRouter.router,
+        title: 'Secure Shield',
+        theme: AppThemes.darkTheme,
+      ),
     );
   }
 }

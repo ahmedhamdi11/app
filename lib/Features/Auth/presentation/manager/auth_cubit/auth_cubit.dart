@@ -38,11 +38,19 @@ class AuthCubit extends Cubit<AuthStates> {
     var result = await authRepo.singInWithGoogle();
 
     result.fold(
-      (failure) {
-        print(failure.errMessage);
-        emit(SignInUserFailureState(failure.errMessage));
-      },
+      (failure) => emit(SignInUserFailureState(failure.errMessage)),
       (userCredential) => emit(SignInWithGoogleSuccessState(userCredential)),
+    );
+  }
+
+  Future<void> singOutUser(BuildContext context) async {
+    emit(SignOutUserLoadingState());
+
+    var result = await authRepo.signOutUser(context);
+
+    result.fold(
+      (failure) => emit(SignOutUserFailureState(failure.errMessage)),
+      (success) => emit(SignOutUserSuccessState(success)),
     );
   }
 }

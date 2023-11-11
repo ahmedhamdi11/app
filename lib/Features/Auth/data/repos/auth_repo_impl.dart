@@ -3,6 +3,7 @@ import 'package:app/core/errors/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepoImpl implements AuthRepo {
@@ -53,6 +54,17 @@ class AuthRepoImpl implements AuthRepo {
           await FirebaseAuth.instance.signInWithCredential(credential);
 
       return right(userCredential);
+    } catch (e) {
+      return left(AuthFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> signOutUser(BuildContext context) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      await GoogleSignIn().signOut();
+      return right('Signed out');
     } catch (e) {
       return left(AuthFailure(e.toString()));
     }
