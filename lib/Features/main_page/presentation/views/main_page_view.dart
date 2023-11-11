@@ -49,12 +49,3 @@ class MainPageView extends StatelessWidget {
     );
   }
 }
-
-//  IconButton(
-//             onPressed: () async {
-//               await FirebaseAuth.instance.signOut().then((value) {
-//                 GoRouter.of(context).pushReplacement(AppRouter.signInViewPath);
-//               });
-//             },
-//             icon: const Icon(Icons.logout_outlined),
-//           )

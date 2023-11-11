@@ -13,7 +13,7 @@ class DefaultTextField extends StatelessWidget {
     this.onChanged,
     this.prefix,
     this.keyboardType,
-    this.maxLines,
+    this.maxLines = 1,
   });
 
   final String? hintText;
@@ -24,7 +24,7 @@ class DefaultTextField extends StatelessWidget {
   final TextEditingController? controller;
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
-  final int? maxLines;
+  final int maxLines;
 
   @override
   Widget build(BuildContext context) {
