@@ -10,5 +10,4 @@ showToastMessage(
       msg: message,
       backgroundColor: backgroundColor,
       textColor: txtColor,
-      toastLength: Toast.LENGTH_LONG,
     );
