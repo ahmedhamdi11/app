@@ -2,6 +2,7 @@ import 'package:app/Features/explore/presentation/widgets/news_article_item.dart
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class NewsListViewBuilder extends StatelessWidget {
   const NewsListViewBuilder({
@@ -21,12 +22,23 @@ class NewsListViewBuilder extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Expanded(
-            child: ListView.builder(
-              itemCount: 10,
-              padding: const EdgeInsets.only(
-                bottom: 100,
+            child: AnimationLimiter(
+              child: ListView.builder(
+                itemCount: 10,
+                padding: const EdgeInsets.only(
+                  bottom: 100,
+                ),
+                itemBuilder: (context, index) =>
+                    AnimationConfiguration.staggeredList(
+                  position: index,
+                  duration: const Duration(milliseconds: 450),
+                  child: const SlideAnimation(
+                    horizontalOffset: 100,
+                    verticalOffset: 30,
+                    child: NewsArticleItem(),
+                  ),
+                ),
               ),
-              itemBuilder: (context, index) => const NewsArticleItem(),
             ),
           ),
         ],
