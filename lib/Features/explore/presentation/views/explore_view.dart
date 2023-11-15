@@ -1,4 +1,5 @@
-import 'package:app/core/utils/app_styles.dart';
+import 'package:app/Features/explore/presentation/widgets/news_listview_builder.dart';
+import 'package:app/Features/explore/presentation/widgets/threat_awareness_listview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -11,11 +12,12 @@ class ExploreView extends StatelessWidget {
       effects: const [
         FadeEffect(),
       ],
-      child: const Center(
-        child: Text(
-          'Explore View',
-          style: AppStyles.text16,
-        ),
+      child: Column(
+        children: [
+          ThreatAwarenessListView(),
+          SizedBox(height: 26.0),
+          const Expanded(child: NewsListViewBuilder()),
+        ],
       ),
     );
   }
