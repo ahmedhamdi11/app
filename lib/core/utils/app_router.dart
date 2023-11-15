@@ -2,6 +2,7 @@ import 'package:app/Features/Auth/presentation/views/sign_in_view.dart';
 import 'package:app/Features/attack_detection/data/repos/attack_detection_repo_impl.dart';
 import 'package:app/Features/attack_detection/presentation/manager/cubits/attack_detection_cubit/attack_detection_cubit.dart';
 import 'package:app/Features/attack_detection/presentation/views/attack_detection_view.dart';
+import 'package:app/Features/explore/presentation/views/threat_awareness_details_view.dart';
 import 'package:app/Features/frauds_detection/data/repos/frauds_detection_repo_impl.dart';
 import 'package:app/Features/frauds_detection/presentation/manager/cubits/cubit/frauds_detection_cubit.dart';
 import 'package:app/Features/frauds_detection/presentation/views/frauds_detection_view.dart';
@@ -27,6 +28,7 @@ abstract class AppRouter {
   static const attackDetectionViewPath = '/attackDetectionViewPath';
   static const malwareDetectionViewPath = '/malwareDetectionViewPath';
   static const mainPageViewPath = '/mainPageViewPath';
+  static const threatAwarenessDetailsPath = '/threatAwarenessDetailsPath';
 
   static GoRouter router = GoRouter(
     initialLocation: '/',
@@ -114,6 +116,16 @@ abstract class AppRouter {
                 malwareDetectionRepo: MalwareDetectionRepoImpl(ApiServices())),
             child: const MalwareDetectionView(),
           ),
+        ),
+      ),
+
+      // threat awareness details view route
+      GoRoute(
+        path: threatAwarenessDetailsPath,
+        pageBuilder: (context, state) => defaultPageTransitionBuilder(
+          key: state.pageKey,
+          transitionType: TransitionTypeEnum.fade,
+          child: const ThreatAwarenessDetailsView(),
         ),
       ),
     ],
