@@ -1,7 +1,7 @@
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_router.dart';
 import 'package:app/core/utils/app_styles.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:app/core/widgets/default_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -55,6 +55,7 @@ class ThreatAwarenessListViewItem extends StatelessWidget {
                 // image
                 Stack(
                   children: [
+                    // background corners
                     Positioned(
                       top: 0,
                       left: 0,
@@ -79,25 +80,13 @@ class ThreatAwarenessListViewItem extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Container(
+
+                    // image
+                    const DefaultNetworkImage(
+                      imageUrl: 'imageUrl',
                       width: 100,
                       height: 100,
-                      margin: const EdgeInsets.all(2),
-                      decoration: BoxDecoration(
-                        color: kIconsBackgroundColor,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: CachedNetworkImage(
-                        imageUrl: 'imageUrl',
-                        errorWidget: (context, url, error) => const Icon(
-                          Icons.image,
-                          color: kWhiteColor,
-                        ),
-                        placeholder: (context, url) => const Icon(
-                          Icons.image,
-                          color: kWhiteColor,
-                        ),
-                      ),
+                      margin: EdgeInsets.all(2),
                     ),
                   ],
                 ),

@@ -1,6 +1,6 @@
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_styles.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:app/core/widgets/default_network_image.dart';
 import 'package:flutter/material.dart';
 
 class NewsArticleItem extends StatelessWidget {
@@ -14,6 +14,7 @@ class NewsArticleItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 8),
       child: Stack(
         children: [
+          // background corners
           Positioned(
             top: 0,
             left: 0,
@@ -38,6 +39,8 @@ class NewsArticleItem extends StatelessWidget {
               ),
             ),
           ),
+
+          // article card
           Card(
             color: kCardColor,
             margin: const EdgeInsets.all(3),
@@ -49,24 +52,10 @@ class NewsArticleItem extends StatelessWidget {
               child: Row(
                 children: [
                   // image
-                  Container(
+                  const DefaultNetworkImage(
+                    imageUrl: 'imageUrl',
                     width: 100,
                     height: 100,
-                    decoration: BoxDecoration(
-                      color: kIconsBackgroundColor,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: CachedNetworkImage(
-                      imageUrl: 'imageUrl',
-                      errorWidget: (context, url, error) => const Icon(
-                        Icons.image,
-                        color: kWhiteColor,
-                      ),
-                      placeholder: (context, url) => const Icon(
-                        Icons.image,
-                        color: kWhiteColor,
-                      ),
-                    ),
                   ),
 
                   const SizedBox(width: 12),

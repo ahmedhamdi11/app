@@ -1,7 +1,7 @@
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_back_button.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:app/core/widgets/default_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ThreatAwarenessDetailsView extends StatelessWidget {
@@ -31,6 +31,7 @@ class ThreatAwarenessDetailsView extends StatelessWidget {
             // image
             Stack(
               children: [
+                // background corners
                 Positioned(
                   top: 0,
                   left: 0,
@@ -55,25 +56,13 @@ class ThreatAwarenessDetailsView extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
+
+                // image
+                DefaultNetworkImage(
+                  imageUrl: '',
                   width: MediaQuery.sizeOf(context).width,
                   height: 200,
                   margin: const EdgeInsets.all(2),
-                  decoration: BoxDecoration(
-                    color: kIconsBackgroundColor,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: CachedNetworkImage(
-                    imageUrl: 'imageUrl',
-                    errorWidget: (context, url, error) => const Icon(
-                      Icons.image,
-                      color: kWhiteColor,
-                    ),
-                    placeholder: (context, url) => const Icon(
-                      Icons.image,
-                      color: kWhiteColor,
-                    ),
-                  ),
                 ),
               ],
             ),
