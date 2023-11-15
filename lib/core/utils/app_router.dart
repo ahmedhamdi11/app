@@ -124,8 +124,10 @@ abstract class AppRouter {
         path: threatAwarenessDetailsPath,
         pageBuilder: (context, state) => defaultPageTransitionBuilder(
           key: state.pageKey,
-          transitionType: TransitionTypeEnum.fade,
-          child: const ThreatAwarenessDetailsView(),
+          duration: const Duration(milliseconds: 350),
+          child: ThreatAwarenessDetailsView(
+            index: state.extra as int,
+          ),
         ),
       ),
     ],

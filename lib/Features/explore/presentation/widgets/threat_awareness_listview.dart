@@ -56,9 +56,12 @@ class ThreatAwarenessListView extends StatelessWidget {
                 position: index,
                 delay: const Duration(milliseconds: 200),
                 duration: const Duration(milliseconds: 450),
-                child: const SlideAnimation(
-                    horizontalOffset: 100,
-                    child: ThreatAwarenessListViewItem()),
+                child: SlideAnimation(
+                  horizontalOffset: 100,
+                  child: ThreatAwarenessListViewItem(
+                    index: index,
+                  ),
+                ),
               ),
             ),
           ),

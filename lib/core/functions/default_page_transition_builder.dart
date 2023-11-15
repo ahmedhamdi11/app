@@ -6,13 +6,13 @@ CustomTransitionPage defaultPageTransitionBuilder({
   required Widget child,
   TransitionTypeEnum transitionType = TransitionTypeEnum.rtlWithFade,
   Duration duration = const Duration(milliseconds: 300),
-  Duration reverseDuratin = const Duration(milliseconds: 300),
+  Duration reverseDuration = const Duration(milliseconds: 300),
 }) {
   return CustomTransitionPage(
     key: key,
     child: child,
     transitionDuration: duration,
-    reverseTransitionDuration: reverseDuratin,
+    reverseTransitionDuration: reverseDuration,
     transitionsBuilder: (context, animation, secondAnimation, child) {
       switch (transitionType) {
         case TransitionTypeEnum.fade:

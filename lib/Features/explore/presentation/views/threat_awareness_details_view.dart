@@ -5,7 +5,9 @@ import 'package:app/core/widgets/default_network_image.dart';
 import 'package:flutter/material.dart';
 
 class ThreatAwarenessDetailsView extends StatelessWidget {
-  const ThreatAwarenessDetailsView({super.key});
+  const ThreatAwarenessDetailsView({super.key, required this.index});
+
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -29,42 +31,45 @@ class ThreatAwarenessDetailsView extends StatelessWidget {
             const SizedBox(height: 12),
 
             // image
-            Stack(
-              children: [
-                // background corners
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  child: Container(
-                    width: 75,
-                    height: 75,
-                    decoration: BoxDecoration(
-                      color: kSecondaryColor,
-                      borderRadius: BorderRadius.circular(14),
+            Hero(
+              tag: 'imageId$index',
+              child: Stack(
+                children: [
+                  // background corners
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      width: 75,
+                      height: 75,
+                      decoration: BoxDecoration(
+                        color: kSecondaryColor,
+                        borderRadius: BorderRadius.circular(14),
+                      ),
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  right: 0,
-                  child: Container(
-                    width: 75,
-                    height: 75,
-                    decoration: BoxDecoration(
-                      color: kSecondaryColor,
-                      borderRadius: BorderRadius.circular(14),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      width: 75,
+                      height: 75,
+                      decoration: BoxDecoration(
+                        color: kSecondaryColor,
+                        borderRadius: BorderRadius.circular(14),
+                      ),
                     ),
                   ),
-                ),
 
-                // image
-                DefaultNetworkImage(
-                  imageUrl: '',
-                  width: MediaQuery.sizeOf(context).width,
-                  height: 200,
-                  margin: const EdgeInsets.all(2),
-                ),
-              ],
+                  // image
+                  DefaultNetworkImage(
+                    imageUrl: '',
+                    width: MediaQuery.sizeOf(context).width,
+                    height: 200,
+                    margin: const EdgeInsets.all(2),
+                  ),
+                ],
+              ),
             ),
 
             const SizedBox(height: 28),

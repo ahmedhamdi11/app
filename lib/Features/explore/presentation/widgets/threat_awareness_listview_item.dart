@@ -8,13 +8,17 @@ import 'package:go_router/go_router.dart';
 class ThreatAwarenessListViewItem extends StatelessWidget {
   const ThreatAwarenessListViewItem({
     super.key,
+    required this.index,
   });
+
+  final int index;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.threatAwarenessDetailsPath);
+        GoRouter.of(context)
+            .push(AppRouter.threatAwarenessDetailsPath, extra: index);
       },
       child: SizedBox(
         width: MediaQuery.sizeOf(context).width * 0.8,
@@ -53,42 +57,45 @@ class ThreatAwarenessListViewItem extends StatelessWidget {
                 const SizedBox(width: 12),
 
                 // image
-                Stack(
-                  children: [
-                    // background corners
-                    Positioned(
-                      top: 0,
-                      left: 0,
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: kSecondaryColor,
-                          borderRadius: BorderRadius.circular(14),
+                Hero(
+                  tag: 'imageId$index',
+                  child: Stack(
+                    children: [
+                      // background corners
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: kSecondaryColor,
+                            borderRadius: BorderRadius.circular(14),
+                          ),
                         ),
                       ),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: kSecondaryColor,
-                          borderRadius: BorderRadius.circular(14),
+                      Positioned(
+                        bottom: 0,
+                        right: 0,
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            color: kSecondaryColor,
+                            borderRadius: BorderRadius.circular(14),
+                          ),
                         ),
                       ),
-                    ),
 
-                    // image
-                    const DefaultNetworkImage(
-                      imageUrl: 'imageUrl',
-                      width: 100,
-                      height: 100,
-                      margin: EdgeInsets.all(2),
-                    ),
-                  ],
+                      // image
+                      const DefaultNetworkImage(
+                        imageUrl: 'imageUrl',
+                        width: 100,
+                        height: 100,
+                        margin: EdgeInsets.all(2),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
