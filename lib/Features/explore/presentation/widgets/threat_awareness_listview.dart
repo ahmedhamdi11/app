@@ -2,6 +2,7 @@ import 'package:app/Features/explore/presentation/widgets/threat_awareness_listv
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class ThreatAwarenessListView extends StatelessWidget {
   const ThreatAwarenessListView({super.key});
@@ -45,12 +46,21 @@ class ThreatAwarenessListView extends StatelessWidget {
         // treats awareness list view
         SizedBox(
           height: 150,
-          child: ListView.builder(
-            padding: const EdgeInsetsDirectional.only(start: 12.0),
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (context, index) =>
-                const ThreatAwarenessListViewItem(),
+          child: AnimationLimiter(
+            child: ListView.builder(
+              padding: const EdgeInsetsDirectional.only(start: 12.0),
+              scrollDirection: Axis.horizontal,
+              itemCount: 5,
+              itemBuilder: (context, index) =>
+                  AnimationConfiguration.staggeredList(
+                position: index,
+                delay: const Duration(milliseconds: 200),
+                duration: const Duration(milliseconds: 450),
+                child: const SlideAnimation(
+                    horizontalOffset: 100,
+                    child: ThreatAwarenessListViewItem()),
+              ),
+            ),
           ),
         ),
       ],
