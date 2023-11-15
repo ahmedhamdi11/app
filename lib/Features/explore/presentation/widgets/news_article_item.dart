@@ -89,6 +89,19 @@ class NewsArticleItem extends StatelessWidget {
                           style: AppStyles.text16
                               .copyWith(color: kWhiteColor.withOpacity(0.5)),
                         ),
+
+                        const SizedBox(height: 8),
+
+                        // date time
+                        Text(
+                          'Wed, Nov 15',
+                          maxLines: 1,
+                          textAlign: TextAlign.right,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppStyles.text14.copyWith(
+                            color: kSecondaryColor,
+                          ),
+                        ),
                       ],
                     ),
                   ),

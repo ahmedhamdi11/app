@@ -47,24 +47,53 @@ class ThreatAwarenessListViewItem extends StatelessWidget {
               const SizedBox(width: 12),
 
               // image
-              Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  color: kIconsBackgroundColor,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: CachedNetworkImage(
-                  imageUrl: 'imageUrl',
-                  errorWidget: (context, url, error) => const Icon(
-                    Icons.image,
-                    color: kWhiteColor,
+              Stack(
+                children: [
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: kSecondaryColor,
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
                   ),
-                  placeholder: (context, url) => const Icon(
-                    Icons.image,
-                    color: kWhiteColor,
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: kSecondaryColor,
+                        borderRadius: BorderRadius.circular(14),
+                      ),
+                    ),
                   ),
-                ),
+                  Container(
+                    width: 100,
+                    height: 100,
+                    margin: const EdgeInsets.all(2),
+                    decoration: BoxDecoration(
+                      color: kIconsBackgroundColor,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: CachedNetworkImage(
+                      imageUrl: 'imageUrl',
+                      errorWidget: (context, url, error) => const Icon(
+                        Icons.image,
+                        color: kWhiteColor,
+                      ),
+                      placeholder: (context, url) => const Icon(
+                        Icons.image,
+                        color: kWhiteColor,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
