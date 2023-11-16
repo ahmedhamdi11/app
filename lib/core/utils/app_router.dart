@@ -16,6 +16,7 @@ import 'package:app/Features/phishing_email_detection/presentation/manager/cubit
 import 'package:app/Features/phishing_email_detection/presentation/views/email_detection_view.dart';
 import 'package:app/Features/splash/presentation/manager/cubit/splash_view_cubit.dart';
 import 'package:app/Features/splash/presentation/views/splash_view.dart';
+import 'package:app/core/constants/constants.dart';
 import 'package:app/core/functions/default_page_transition_builder.dart';
 import 'package:app/core/services/api_services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -74,7 +75,8 @@ abstract class AppRouter {
           key: state.pageKey,
           child: BlocProvider(
             create: (context) => PhishingEDCubit(
-                emailDetectionRepo: EmailDetectionRepoImpl(ApiServices())),
+                emailDetectionRepo:
+                    EmailDetectionRepoImpl(ApiServices(kBaseUrl))),
             child: const EmailDetectionView(),
           ),
         ),
@@ -87,7 +89,8 @@ abstract class AppRouter {
           key: state.pageKey,
           child: BlocProvider(
             create: (context) => FraudsDetectionCubit(
-                fraudsDetectionRepo: FraudsDetectionRepoImpl(ApiServices())),
+                fraudsDetectionRepo:
+                    FraudsDetectionRepoImpl(ApiServices(kBaseUrl))),
             child: const FraudsDetectionView(),
           ),
         ),
@@ -100,7 +103,8 @@ abstract class AppRouter {
           key: state.pageKey,
           child: BlocProvider(
             create: (context) => AttackDetectionCubit(
-                attackDetectionRepo: AttackDetectionRepoImpl(ApiServices())),
+                attackDetectionRepo:
+                    AttackDetectionRepoImpl(ApiServices(kBaseUrl))),
             child: const AttackDetectionView(),
           ),
         ),
@@ -113,7 +117,8 @@ abstract class AppRouter {
           key: state.pageKey,
           child: BlocProvider(
             create: (context) => MalwareDetectionCubit(
-                malwareDetectionRepo: MalwareDetectionRepoImpl(ApiServices())),
+                malwareDetectionRepo:
+                    MalwareDetectionRepoImpl(ApiServices(kBaseUrl))),
             child: const MalwareDetectionView(),
           ),
         ),

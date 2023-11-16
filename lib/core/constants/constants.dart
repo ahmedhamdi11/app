@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kBaseUrl = 'https://glory-team.azurewebsites.net';
-const kNewsBaseUrl = 'https://newsapi.org/v2/everything?';
+const kNewsBaseUrl = 'https://newsapi.org';
 
 // end points
 const kPhishingEmailEndPoint = '/phishing_email_detection';

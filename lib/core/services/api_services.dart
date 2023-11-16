@@ -1,10 +1,9 @@
-import 'package:app/core/constants/constants.dart';
 import 'package:dio/dio.dart';
 
 class ApiServices {
   Dio dio = Dio();
-  ApiServices() {
-    BaseOptions options = BaseOptions(baseUrl: kBaseUrl);
+  ApiServices(String baseUrl) {
+    BaseOptions options = BaseOptions(baseUrl: baseUrl);
     dio = Dio(options);
   }
 
