@@ -18,3 +18,18 @@ class GetCyberNewsFailureState extends ExploreStates {
 
   GetCyberNewsFailureState(this.errMessage);
 }
+
+// get threat awareness data states
+class GetThreatAwarenessLoadingState extends ExploreStates {}
+
+class GetThreatAwarenessSuccessState extends ExploreStates {
+  final List<ThreatAwarenessModel> threatAwarenessData;
+
+  GetThreatAwarenessSuccessState(this.threatAwarenessData);
+}
+
+class GetThreatAwarenessFailureState extends ExploreStates {
+  final String errMessage;
+
+  GetThreatAwarenessFailureState(this.errMessage);
+}

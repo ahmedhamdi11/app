@@ -1,4 +1,5 @@
 import 'package:app/Features/explore/data/models/news_model.dart';
+import 'package:app/Features/explore/data/models/threat_awareness_model.dart';
 import 'package:app/Features/explore/data/repos/explore_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,6 +18,18 @@ class ExploreCubit extends Cubit<ExploreStates> {
     result.fold(
       (failure) => emit(GetCyberNewsFailureState(failure.errMessage)),
       (cyberNews) => emit(GetCyberNewsSuccessState(cyberNews)),
+    );
+  }
+
+  Future<void> getThreatAwarenessData() async {
+    emit(GetThreatAwarenessLoadingState());
+
+    var result = await exploreRepo.getTreatAwarenessData();
+
+    result.fold(
+      (failure) => emit(GetCyberNewsFailureState(failure.errMessage)),
+      (threatAwarenessData) =>
+          emit(GetThreatAwarenessSuccessState(threatAwarenessData)),
     );
   }
 }
