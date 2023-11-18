@@ -2,6 +2,7 @@ import 'package:app/Features/Auth/presentation/views/sign_in_view.dart';
 import 'package:app/Features/attack_detection/data/repos/attack_detection_repo_impl.dart';
 import 'package:app/Features/attack_detection/presentation/manager/cubits/attack_detection_cubit/attack_detection_cubit.dart';
 import 'package:app/Features/attack_detection/presentation/views/attack_detection_view.dart';
+import 'package:app/Features/explore/presentation/views/news_web_view.dart';
 import 'package:app/Features/explore/presentation/views/threat_awareness_details_view.dart';
 import 'package:app/Features/frauds_detection/data/repos/frauds_detection_repo_impl.dart';
 import 'package:app/Features/frauds_detection/presentation/manager/cubits/cubit/frauds_detection_cubit.dart';
@@ -30,6 +31,7 @@ abstract class AppRouter {
   static const malwareDetectionViewPath = '/malwareDetectionViewPath';
   static const mainPageViewPath = '/mainPageViewPath';
   static const threatAwarenessDetailsPath = '/threatAwarenessDetailsPath';
+  static const newsWebViewPath = '/newsWebViewPath';
 
   static GoRouter router = GoRouter(
     initialLocation: '/',
@@ -133,6 +135,15 @@ abstract class AppRouter {
           child: ThreatAwarenessDetailsView(
             index: state.extra as int,
           ),
+        ),
+      ),
+
+      // newsWebViewPath route
+      GoRoute(
+        path: newsWebViewPath,
+        pageBuilder: (context, state) => defaultPageTransitionBuilder(
+          key: state.pageKey,
+          child: NewsWebview(url: state.extra as String),
         ),
       ),
     ],
