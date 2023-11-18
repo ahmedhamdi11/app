@@ -28,15 +28,19 @@ class DefaultNetworkImage extends StatelessWidget {
         color: kIconsBackgroundColor,
         borderRadius: BorderRadius.circular(borderRadius),
       ),
-      child: CachedNetworkImage(
-        imageUrl: imageUrl,
-        errorWidget: (context, url, error) => const Icon(
-          Icons.image,
-          color: kWhiteColor,
-        ),
-        placeholder: (context, url) => const Icon(
-          Icons.image,
-          color: kWhiteColor,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(borderRadius),
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          fit: BoxFit.cover,
+          errorWidget: (context, url, error) => const Icon(
+            Icons.image,
+            color: kWhiteColor,
+          ),
+          placeholder: (context, url) => const Icon(
+            Icons.image,
+            color: kWhiteColor,
+          ),
         ),
       ),
     );

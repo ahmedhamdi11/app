@@ -12,11 +12,11 @@ class ExploreView extends StatelessWidget {
       effects: const [
         FadeEffect(),
       ],
-      child: Column(
+      child: const Column(
         children: [
           ThreatAwarenessListView(),
           SizedBox(height: 26.0),
-          const Expanded(child: NewsListViewBuilder()),
+          Expanded(child: NewsListViewBuilder()),
         ],
       ),
     );

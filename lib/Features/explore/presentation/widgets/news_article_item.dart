@@ -1,3 +1,4 @@
+import 'package:app/Features/explore/data/models/news_model.dart';
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_network_image.dart';
@@ -6,7 +7,10 @@ import 'package:flutter/material.dart';
 class NewsArticleItem extends StatelessWidget {
   const NewsArticleItem({
     super.key,
+    required this.newsModel,
   });
+
+  final NewsModel newsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +56,8 @@ class NewsArticleItem extends StatelessWidget {
               child: Row(
                 children: [
                   // image
-                  const DefaultNetworkImage(
-                    imageUrl: 'imageUrl',
+                  DefaultNetworkImage(
+                    imageUrl: newsModel.urlToImage,
                     width: 100,
                     height: 100,
                   ),
@@ -66,14 +70,14 @@ class NewsArticleItem extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Article title',
+                          newsModel.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: AppStyles.text20.copyWith(color: kWhiteColor),
                         ),
                         Text(
-                          'article description ' * 2,
-                          maxLines: 3,
+                          newsModel.description,
+                          maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: AppStyles.text16
                               .copyWith(color: kWhiteColor.withOpacity(0.5)),
@@ -83,7 +87,7 @@ class NewsArticleItem extends StatelessWidget {
 
                         // date time
                         Text(
-                          'Wed, Nov 15',
+                          newsModel.publishedAt,
                           maxLines: 1,
                           textAlign: TextAlign.right,
                           overflow: TextOverflow.ellipsis,

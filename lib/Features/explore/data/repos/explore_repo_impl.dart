@@ -24,8 +24,9 @@ class ExploreRepoImpl implements ExploreRepo {
 
       // add the response data to my news list
       List<NewsModel> cyberNews = [];
-      for (int i = 0; i < response.data['articles']; i++) {
-        cyberNews.add(NewsModel.fromJson(response.data['articles'][i]));
+
+      for (var item in response.data['articles']) {
+        cyberNews.add(NewsModel.fromJson(item));
       }
 
       return right(cyberNews);

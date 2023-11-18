@@ -1,7 +1,9 @@
+import 'package:app/Features/explore/presentation/manager/cubits/explore_cubit/explore_cubit.dart';
 import 'package:app/Features/explore/presentation/widgets/news_article_item.dart';
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class NewsListViewBuilder extends StatelessWidget {
@@ -16,29 +18,49 @@ class NewsListViewBuilder extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // title
           Text(
             'Cyber security news',
             style: AppStyles.text22.copyWith(color: kWhiteColor),
           ),
+
           const SizedBox(height: 12),
+
+          // list view
           Expanded(
-            child: AnimationLimiter(
-              child: ListView.builder(
-                itemCount: 10,
-                padding: const EdgeInsets.only(
-                  bottom: 100,
-                ),
-                itemBuilder: (context, index) =>
-                    AnimationConfiguration.staggeredList(
-                  position: index,
-                  duration: const Duration(milliseconds: 450),
-                  child: const SlideAnimation(
-                    horizontalOffset: 100,
-                    verticalOffset: 30,
-                    child: NewsArticleItem(),
-                  ),
-                ),
-              ),
+            child: BlocBuilder<ExploreCubit, ExploreStates>(
+              builder: (context, state) {
+                if (state is GetCyberNewsSuccessState) {
+                  return AnimationLimiter(
+                    child: ListView.builder(
+                      itemCount: state.cyberNews.length,
+                      padding: const EdgeInsets.only(
+                        bottom: 100,
+                      ),
+                      itemBuilder: (context, index) =>
+                          AnimationConfiguration.staggeredList(
+                        position: index,
+                        duration: const Duration(milliseconds: 450),
+                        child: SlideAnimation(
+                          horizontalOffset: 100,
+                          verticalOffset: 30,
+                          child: NewsArticleItem(
+                            newsModel: state.cyberNews[index],
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                } else if (state is GetCyberNewsFailureState) {
+                  return Center(
+                    child: Text(state.errMessage),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
             ),
           ),
         ],
