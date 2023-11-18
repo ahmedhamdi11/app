@@ -8,6 +8,7 @@ const kPhishingEmailEndPoint = '/phishing_email_detection';
 const kFraudsDetectionEndPoint = '/frauds_detection';
 const kAttackDetectionEndPoint = '/attack_detection';
 const kMalwareDetectionEndPoint = '/malware_detection';
+const kThreatAwarenessEndPoint = '/awareness';
 
 // colors
 const kPrimaryColor = Color(0xff43ED9D);
