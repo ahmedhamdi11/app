@@ -1,5 +1,7 @@
 import 'package:app/Features/explore/data/models/news_model.dart';
+import 'package:app/Features/explore/data/models/threat_awareness_model.dart';
 import 'package:app/Features/explore/data/repos/explore_repo.dart';
+import 'package:app/core/constants/constants.dart';
 import 'package:app/core/errors/failures.dart';
 import 'package:app/core/services/api_services.dart';
 import 'package:dartz/dartz.dart';
@@ -30,6 +32,32 @@ class ExploreRepoImpl implements ExploreRepo {
       }
 
       return right(cyberNews);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDio(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ThreatAwarenessModel>>>
+      getTreatAwarenessData() async {
+    try {
+      // send get request
+      Response response = await apiServices.get(
+        endPoint: kThreatAwarenessEndPoint,
+      );
+
+      // add the response data to my list
+      List<ThreatAwarenessModel> threatAwarenessData = [];
+
+      for (var item in response.data['data']) {
+        threatAwarenessData.add(ThreatAwarenessModel.fromJson(item));
+      }
+
+      return right(threatAwarenessData);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDio(e));

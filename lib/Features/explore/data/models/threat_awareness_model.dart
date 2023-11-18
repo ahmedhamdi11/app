@@ -9,7 +9,7 @@ class ThreatAwarenessModel {
     required this.imageUrl,
   });
 
-  factory ThreatAwarenessModel.formJson(Map<String, dynamic> jsonData) {
+  factory ThreatAwarenessModel.fromJson(Map<String, dynamic> jsonData) {
     return ThreatAwarenessModel(
       title: jsonData['title'],
       desc: jsonData['desc'],
