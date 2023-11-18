@@ -1,5 +1,6 @@
 import 'package:app/Features/explore/presentation/manager/cubits/explore_cubit/explore_cubit.dart';
 import 'package:app/Features/explore/presentation/widgets/news_article_item.dart';
+import 'package:app/Features/explore/presentation/widgets/shimmer_widgets/news_listview_shimmer.dart';
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -56,9 +57,7 @@ class NewsListViewBuilder extends StatelessWidget {
                     child: Text(state.errMessage),
                   );
                 } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return const NewsListViewShimmer();
                 }
               },
             ),
