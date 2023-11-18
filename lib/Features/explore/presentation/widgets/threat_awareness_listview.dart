@@ -1,4 +1,5 @@
 import 'package:app/Features/explore/presentation/manager/cubits/threat_awareness_cubit/threat_awareness_cubit.dart';
+import 'package:app/Features/explore/presentation/widgets/shimmer_widgets/threat_listview_shimmer.dart';
 import 'package:app/Features/explore/presentation/widgets/threat_awareness_listview_item.dart';
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/utils/app_styles.dart';
@@ -73,7 +74,7 @@ class ThreatAwarenessListView extends StatelessWidget {
               } else if (state is GetThreatAwarenessFailureState) {
                 return Text(state.errMessage);
               } else {
-                return const CircularProgressIndicator();
+                return const ThreatListViewShimmer();
               }
             },
           ),
