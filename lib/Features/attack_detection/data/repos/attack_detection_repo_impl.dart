@@ -26,7 +26,7 @@ class AttackDetectionRepoImpl implements AttackDetectionRepo {
 
     try {
       Response response = await apiServices.post(
-        endPoint: kAttackDetectionEndPoint,
+        url: kBaseUrl + kAttackDetectionEndPoint,
         data: formData,
       );
       PredictionModel prediction =

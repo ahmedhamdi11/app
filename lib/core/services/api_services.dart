@@ -1,19 +1,15 @@
 import 'package:dio/dio.dart';
 
 class ApiServices {
-  Dio dio = Dio();
-  ApiServices(String baseUrl) {
-    BaseOptions options = BaseOptions(baseUrl: baseUrl);
-    dio = Dio(options);
-  }
+  final _dio = Dio();
 
   Future<Response> get({
-    required String endPoint,
+    required String url,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? queryParameters,
   }) async {
-    Response response = await dio.get(
-      endPoint,
+    Response response = await _dio.get(
+      url,
       queryParameters: queryParameters,
       options: Options(
         headers: headers,
@@ -23,13 +19,13 @@ class ApiServices {
   }
 
   Future<Response> post({
-    required String endPoint,
+    required String url,
     Map<String, dynamic>? headers,
     Map<String, dynamic>? queryParameters,
     Object? data,
   }) async {
-    Response response = await dio.post(
-      endPoint,
+    Response response = await _dio.post(
+      url,
       queryParameters: queryParameters,
       options: Options(
         headers: headers,

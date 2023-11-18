@@ -1,4 +1,4 @@
-import 'package:app/Features/explore/presentation/manager/cubits/explore_cubit/explore_cubit.dart';
+import 'package:app/Features/explore/presentation/manager/cubits/cyber_news_cubit.dart/cyber_news_cubit.dart';
 import 'package:app/Features/explore/presentation/widgets/news_article_item.dart';
 import 'package:app/Features/explore/presentation/widgets/shimmer_widgets/news_listview_shimmer.dart';
 import 'package:app/core/constants/constants.dart';
@@ -29,7 +29,7 @@ class NewsListViewBuilder extends StatelessWidget {
 
           // list view
           Expanded(
-            child: BlocBuilder<ExploreCubit, ExploreStates>(
+            child: BlocBuilder<CyberNewsCubit, CyberNewsStates>(
               builder: (context, state) {
                 if (state is GetCyberNewsSuccessState) {
                   return AnimationLimiter(

@@ -25,7 +25,7 @@ class FraudsDetectionRepoImpl implements FraudsDetectionRepo {
 
     try {
       Response response = await apiServices.post(
-        endPoint: kFraudsDetectionEndPoint,
+        url: kBaseUrl + kFraudsDetectionEndPoint,
         data: formData,
       );
       PredictionModel prediction =

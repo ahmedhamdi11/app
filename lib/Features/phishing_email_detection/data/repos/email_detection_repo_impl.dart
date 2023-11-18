@@ -15,8 +15,10 @@ class EmailDetectionRepoImpl implements EmailDetectionRepo {
   Future<Either<Failure, PredictionModel>> checkEmail(
       {required String email}) async {
     try {
-      Response response = await apiServices
-          .post(endPoint: kPhishingEmailEndPoint, data: {'email': email});
+      Response response = await apiServices.post(
+        url: kBaseUrl + kPhishingEmailEndPoint,
+        data: {'email': email},
+      );
       PredictionModel prediction =
           PredictionModel.fromJson(response.data['data']);
       return right(prediction);

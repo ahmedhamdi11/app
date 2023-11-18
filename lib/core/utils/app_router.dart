@@ -2,6 +2,7 @@ import 'package:app/Features/Auth/presentation/views/sign_in_view.dart';
 import 'package:app/Features/attack_detection/data/repos/attack_detection_repo_impl.dart';
 import 'package:app/Features/attack_detection/presentation/manager/cubits/attack_detection_cubit/attack_detection_cubit.dart';
 import 'package:app/Features/attack_detection/presentation/views/attack_detection_view.dart';
+import 'package:app/Features/explore/data/models/threat_awareness_model.dart';
 import 'package:app/Features/explore/presentation/views/news_web_view.dart';
 import 'package:app/Features/explore/presentation/views/threat_awareness_details_view.dart';
 import 'package:app/Features/frauds_detection/data/repos/frauds_detection_repo_impl.dart';
@@ -17,7 +18,6 @@ import 'package:app/Features/phishing_email_detection/presentation/manager/cubit
 import 'package:app/Features/phishing_email_detection/presentation/views/email_detection_view.dart';
 import 'package:app/Features/splash/presentation/manager/cubit/splash_view_cubit.dart';
 import 'package:app/Features/splash/presentation/views/splash_view.dart';
-import 'package:app/core/constants/constants.dart';
 import 'package:app/core/functions/default_page_transition_builder.dart';
 import 'package:app/core/services/api_services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -77,8 +77,7 @@ abstract class AppRouter {
           key: state.pageKey,
           child: BlocProvider(
             create: (context) => PhishingEDCubit(
-                emailDetectionRepo:
-                    EmailDetectionRepoImpl(ApiServices(kBaseUrl))),
+                emailDetectionRepo: EmailDetectionRepoImpl(ApiServices())),
             child: const EmailDetectionView(),
           ),
         ),
@@ -91,8 +90,7 @@ abstract class AppRouter {
           key: state.pageKey,
           child: BlocProvider(
             create: (context) => FraudsDetectionCubit(
-                fraudsDetectionRepo:
-                    FraudsDetectionRepoImpl(ApiServices(kBaseUrl))),
+                fraudsDetectionRepo: FraudsDetectionRepoImpl(ApiServices())),
             child: const FraudsDetectionView(),
           ),
         ),
@@ -105,8 +103,7 @@ abstract class AppRouter {
           key: state.pageKey,
           child: BlocProvider(
             create: (context) => AttackDetectionCubit(
-                attackDetectionRepo:
-                    AttackDetectionRepoImpl(ApiServices(kBaseUrl))),
+                attackDetectionRepo: AttackDetectionRepoImpl(ApiServices())),
             child: const AttackDetectionView(),
           ),
         ),
@@ -119,8 +116,7 @@ abstract class AppRouter {
           key: state.pageKey,
           child: BlocProvider(
             create: (context) => MalwareDetectionCubit(
-                malwareDetectionRepo:
-                    MalwareDetectionRepoImpl(ApiServices(kBaseUrl))),
+                malwareDetectionRepo: MalwareDetectionRepoImpl(ApiServices())),
             child: const MalwareDetectionView(),
           ),
         ),
@@ -133,7 +129,7 @@ abstract class AppRouter {
           key: state.pageKey,
           duration: const Duration(milliseconds: 350),
           child: ThreatAwarenessDetailsView(
-            index: state.extra as int,
+            data: state.extra as ThreatAwarenessModel,
           ),
         ),
       ),

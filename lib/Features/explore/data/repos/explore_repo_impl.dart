@@ -18,7 +18,7 @@ class ExploreRepoImpl implements ExploreRepo {
     try {
       // send get request
       Response response = await apiServices.get(
-        endPoint: '/v2/everything?q=cyber security',
+        url: '$kNewsBaseUrl/v2/everything?q=cyber security',
         headers: {
           'X-Api-Key': apiKey,
         },
@@ -47,7 +47,7 @@ class ExploreRepoImpl implements ExploreRepo {
     try {
       // send get request
       Response response = await apiServices.get(
-        endPoint: kThreatAwarenessEndPoint,
+        url: kBaseUrl + kThreatAwarenessEndPoint,
       );
 
       // add the response data to my list

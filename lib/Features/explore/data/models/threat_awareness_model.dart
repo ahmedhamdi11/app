@@ -11,9 +11,9 @@ class ThreatAwarenessModel {
 
   factory ThreatAwarenessModel.fromJson(Map<String, dynamic> jsonData) {
     return ThreatAwarenessModel(
-      title: jsonData['title'],
-      desc: jsonData['desc'],
-      imageUrl: jsonData['image'],
+      title: jsonData['title'] ?? '',
+      desc: jsonData['desc'] ?? '',
+      imageUrl: jsonData['image'] ?? '',
     );
   }
 }
