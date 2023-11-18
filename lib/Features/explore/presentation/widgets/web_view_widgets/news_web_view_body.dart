@@ -1,3 +1,4 @@
+import 'package:app/core/constants/constants.dart';
 import 'package:app/core/widgets/custom_shimmer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
@@ -18,8 +19,12 @@ class WebviewBody extends StatelessWidget {
       children: [
         // loading progress indicator
         if (loadingProgress != 1)
-          LinearProgressIndicator(
-            value: loadingProgress,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8.0),
+            child: LinearProgressIndicator(
+              value: loadingProgress,
+              backgroundColor: kCardColor,
+            ),
           ),
 
         // body (web view)
@@ -30,7 +35,9 @@ class WebviewBody extends StatelessWidget {
                 ),
               )
             : const Expanded(
-                child: CustomShimmerWidget(),
+                child: CustomShimmerWidget(
+                  shimmerLoadingType: ShimmerLoadingType.fade,
+                ),
               ),
       ],
     );
