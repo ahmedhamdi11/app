@@ -2,33 +2,98 @@ import 'package:app/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-class CustomShimmerWidget extends StatelessWidget {
+class CustomShimmerWidget extends StatefulWidget {
   const CustomShimmerWidget({
     super.key,
     this.width,
     this.height,
     this.shape = const RoundedRectangleBorder(),
-    this.color,
+    this.shimmerBaseColor,
+    this.shimmerHighlightColor,
+    this.shimmerLoadingType = ShimmerLoadingType.shimmer,
+    this.fadeLoadingColor = kCardColor,
   });
 
   final double? width;
   final double? height;
   final ShapeBorder shape;
-  final Color? color;
+  final Color? shimmerBaseColor;
+  final Color? shimmerHighlightColor;
+  final Color fadeLoadingColor;
+  final ShimmerLoadingType shimmerLoadingType;
+
+  @override
+  State<CustomShimmerWidget> createState() => _CustomShimmerWidgetState();
+}
+
+class _CustomShimmerWidgetState extends State<CustomShimmerWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    // initialize the animation controller
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+
+    // create tween animation
+    _animation = Tween<double>(begin: 0.3, end: 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.linear,
+      ),
+    );
+
+    // start repeating animation
+    _controller.repeat(reverse: true);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Shimmer.fromColors(
-      baseColor: Colors.grey.shade300,
-      highlightColor: Colors.grey.shade200,
-      child: Container(
-        width: width,
-        height: height,
-        decoration: ShapeDecoration(
-          color: kWhiteColor,
-          shape: shape,
-        ),
-      ),
-    );
+    switch (widget.shimmerLoadingType) {
+      case ShimmerLoadingType.shimmer:
+        return Shimmer.fromColors(
+          baseColor:
+              widget.shimmerBaseColor ?? kIconsBackgroundColor.withOpacity(0.3),
+          highlightColor:
+              widget.shimmerHighlightColor ?? kPrimaryColor.withOpacity(0.25),
+          child: Container(
+            width: widget.width,
+            height: widget.height,
+            decoration: ShapeDecoration(
+              color: kIconsBackgroundColor,
+              shape: widget.shape,
+            ),
+          ),
+        );
+
+      case ShimmerLoadingType.fade:
+        return FadeTransition(
+          opacity: _animation,
+          child: Container(
+            width: widget.width,
+            height: widget.height,
+            decoration: ShapeDecoration(
+              color: widget.fadeLoadingColor,
+              shape: widget.shape,
+            ),
+          ),
+        );
+    }
   }
+}
+
+enum ShimmerLoadingType {
+  fade,
+  shimmer,
 }
