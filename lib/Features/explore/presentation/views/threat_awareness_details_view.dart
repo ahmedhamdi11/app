@@ -16,78 +16,70 @@ class ThreatAwarenessDetailsView extends StatelessWidget {
       appBar: AppBar(
         leading: const DefaultBackButton(),
       ),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 18.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
+        children: [
+          const SizedBox(height: 20),
 
-            // title
-            Text(
-              data.title,
-              style: AppStyles.text22,
-            ),
+          // title
+          Text(
+            data.title,
+            style: AppStyles.text22,
+          ),
 
-            const SizedBox(height: 12),
+          const SizedBox(height: 12),
 
-            // image
-            Stack(
-              children: [
-                // background corners
-                Positioned(
-                  top: 0,
-                  left: 0,
-                  child: Container(
-                    width: 75,
-                    height: 75,
-                    decoration: BoxDecoration(
-                      color: kSecondaryColor,
-                      borderRadius: BorderRadius.circular(14),
-                    ),
+          // image
+          Stack(
+            children: [
+              // background corners
+              Positioned(
+                top: 0,
+                left: 0,
+                child: Container(
+                  width: 75,
+                  height: 75,
+                  decoration: BoxDecoration(
+                    color: kSecondaryColor,
+                    borderRadius: BorderRadius.circular(14),
                   ),
                 ),
-                Positioned(
-                  bottom: 0,
-                  right: 0,
-                  child: Container(
-                    width: 75,
-                    height: 75,
-                    decoration: BoxDecoration(
-                      color: kSecondaryColor,
-                      borderRadius: BorderRadius.circular(14),
-                    ),
+              ),
+              Positioned(
+                bottom: 0,
+                right: 0,
+                child: Container(
+                  width: 75,
+                  height: 75,
+                  decoration: BoxDecoration(
+                    color: kSecondaryColor,
+                    borderRadius: BorderRadius.circular(14),
                   ),
                 ),
-
-                // image
-                DefaultNetworkImage(
-                  imageUrl: data.imageUrl,
-                  width: MediaQuery.sizeOf(context).width,
-                  height: 200,
-                  margin: const EdgeInsets.all(2),
-                ),
-              ],
-            ),
-
-            const SizedBox(height: 28),
-
-            // description
-            Text(
-              'Content:',
-              style: AppStyles.text18.copyWith(
-                color: kWhiteColor,
               ),
-            ),
 
-            Text(
-              data.desc,
-              style: AppStyles.text16.copyWith(
-                color: kWhiteColor.withOpacity(0.8),
+              // image
+              DefaultNetworkImage(
+                imageUrl: data.imageUrl,
+                width: MediaQuery.sizeOf(context).width,
+                height: 200,
+                margin: const EdgeInsets.all(2),
               ),
+            ],
+          ),
+
+          const SizedBox(height: 28),
+
+          // description
+          Text(
+            data.desc,
+            style: AppStyles.text16.copyWith(
+              color: kWhiteColor.withOpacity(0.8),
             ),
-          ],
-        ),
+          ),
+
+          const SizedBox(height: 38),
+        ],
       ),
     );
   }
