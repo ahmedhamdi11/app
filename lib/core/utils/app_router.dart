@@ -13,6 +13,8 @@ import 'package:app/Features/main_page/presentation/views/main_page_view.dart';
 import 'package:app/Features/malware_detection/data/repos/malware_detection_repo_impl.dart';
 import 'package:app/Features/malware_detection/presentation/manager/cubits/malware_detection_cubit/malware_detection_cubit.dart';
 import 'package:app/Features/malware_detection/presentation/views/malware_detection_view.dart';
+import 'package:app/Features/onBoarding/presentation/manager/page_view_cubit/page_view_cubit.dart';
+import 'package:app/Features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:app/Features/phishing_email_detection/data/repos/email_detection_repo_impl.dart';
 import 'package:app/Features/phishing_email_detection/presentation/manager/cubit/phishing_email_cubit.dart';
 import 'package:app/Features/phishing_email_detection/presentation/views/email_detection_view.dart';
@@ -24,6 +26,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
+  static const onBoardingViewPath = '/onBoardingViewPath';
   static const signInViewPath = '/signInViewPath';
   static const emailDetectionViewPath = '/emailDetectionViewPath';
   static const fraudsDetectionViewPath = '/fraudsDetectionViewPath';
@@ -42,6 +45,19 @@ abstract class AppRouter {
         builder: (context, state) => BlocProvider(
           create: (context) => SplashViewCubit()..changeSplashStates(context),
           child: const SplashView(),
+        ),
+      ),
+
+      // onboarding route
+      GoRoute(
+        path: onBoardingViewPath,
+        pageBuilder: (context, state) => defaultPageTransitionBuilder(
+          key: state.pageKey,
+          transitionType: TransitionTypeEnum.fade,
+          child: BlocProvider(
+            create: (context) => PageViewCubit(),
+            child: const OnBoardingView(),
+          ),
         ),
       ),
 

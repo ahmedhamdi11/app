@@ -37,13 +37,7 @@ class SplashViewCubit extends Cubit<SplashViewStates> {
     });
 
     timer4 = Timer(const Duration(milliseconds: 5650), () {
-      FirebaseAuth.instance.authStateChanges().listen((User? user) {
-        if (user == null) {
-          GoRouter.of(context).pushReplacement(AppRouter.signInViewPath);
-        } else {
-          GoRouter.of(context).pushReplacement(AppRouter.mainPageViewPath);
-        }
-      });
+      _navigateBasedOnCondition(context);
     });
   }
 
@@ -52,6 +46,29 @@ class SplashViewCubit extends Cubit<SplashViewStates> {
     timer2.cancel();
     timer3.cancel();
     timer4.cancel();
+  }
+
+  void _navigateBasedOnCondition(BuildContext context) {
+    // String? token = getIt<SharedPreferences>().getString('token');
+    // bool? onboarding = getIt<SharedPreferences>().getBool('onboarding');
+
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      if (user == null) {
+        GoRouter.of(context).pushReplacement(AppRouter.onBoardingViewPath);
+        return;
+      } else {
+        GoRouter.of(context).pushReplacement(AppRouter.mainPageViewPath);
+        return;
+      }
+    });
+
+    // if (token != null) {
+    //   Navigator.of(context).pushReplacementNamed(AppRouter.mainPagePath);
+    // } else if (onboarding == true) {
+    //   Navigator.of(context).pushReplacementNamed(AppRouter.signInViewPath);
+    // } else {
+    //   Navigator.of(context).pushReplacementNamed(AppRouter.onBoardingViewPath);
+    // }
   }
 
   @override

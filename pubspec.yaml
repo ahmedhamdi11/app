@@ -47,6 +47,7 @@ dependencies:
   google_fonts: ^6.1.0
   google_sign_in: ^6.1.6
   intl: ^0.18.1
+  lottie: ^2.7.0
   path: ^1.8.3
   share_plus: ^7.2.1
   shimmer: ^3.0.0
