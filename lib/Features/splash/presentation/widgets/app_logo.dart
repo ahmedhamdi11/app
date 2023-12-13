@@ -17,8 +17,8 @@ class AppLogo extends StatelessWidget {
         ],
         child: SvgPicture.asset(
           'assets/images/secure_shield_logo.svg',
-          width: 200,
-          height: 200,
+          width: 180,
+          height: 180,
         ),
       ),
     );

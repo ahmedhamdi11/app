@@ -30,12 +30,12 @@ class AppName extends StatelessWidget {
             width: splashViewCubit.isExpanded
                 ? w
                 : splashViewCubit.isRectangle
-                    ? 180
+                    ? 165
                     : 20,
             height: splashViewCubit.isExpanded
                 ? h
                 : splashViewCubit.isRectangle
-                    ? 55
+                    ? 50
                     : 20,
             decoration: BoxDecoration(
               color: splashViewCubit.isExpanded
@@ -57,7 +57,7 @@ class AppName extends StatelessWidget {
                       child: Text(
                         'Secure Shield',
                         style: GoogleFonts.bitter(
-                          fontSize: 20,
+                          fontSize: 17,
                           color: kWhiteColor,
                           fontWeight: FontWeight.w500,
                         ),
