@@ -21,8 +21,8 @@ class AppSettings extends StatelessWidget {
         const SizedBox(height: 8),
         Container(
           padding: const EdgeInsetsDirectional.only(
-            top: 20,
-            bottom: 20,
+            top: 14,
+            bottom: 14,
             start: 16,
             end: 12,
           ),
@@ -32,20 +32,55 @@ class AppSettings extends StatelessWidget {
           ),
           child: Material(
             color: Colors.transparent,
-            child: Column(
-              children: [
-                // online status
-                DefaultSwitchTile(
-                  value: true,
-                  titleText: "Dark Theme",
-                  onChanged: (value) {},
-                  icon: const Icon(
-                    Icons.dark_mode,
-                    color: kIconsBackgroundColor,
-                  ),
-                ),
-              ],
+            child: DefaultSwitchTile(
+              value: true,
+              titleText: "Dark Theme",
+              onChanged: (value) {},
+              icon: const Icon(
+                Icons.dark_mode,
+                color: kIconsBackgroundColor,
+              ),
             ),
+          ),
+        ),
+
+        const SizedBox(height: 8),
+
+        // lang
+        AnimatedContainer(
+          height: 74,
+          duration: const Duration(milliseconds: 250),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+          decoration: BoxDecoration(
+            color: kCardColor,
+            borderRadius: BorderRadius.circular(28),
+          ),
+          child: Row(
+            children: [
+              Container(
+                alignment: Alignment.center,
+                child: const Icon(
+                  Icons.language_rounded,
+                  color: kIconsBackgroundColor,
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                'Language',
+                style: AppStyles.text16.copyWith(
+                  color: kWhiteColor,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              const Spacer(),
+              Text(
+                'English',
+                style: AppStyles.text16.copyWith(
+                  color: kPrimaryColor,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
           ),
         ),
       ],

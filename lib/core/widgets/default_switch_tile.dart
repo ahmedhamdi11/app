@@ -23,8 +23,7 @@ class DefaultSwitchTile extends StatelessWidget {
       dense: true,
       activeTrackColor: kPrimaryColor,
       activeColor: kWhiteColor,
-      inactiveTrackColor: Colors.grey.shade300,
-      contentPadding: const EdgeInsets.symmetric(horizontal: 4),
+      contentPadding: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),

@@ -43,53 +43,66 @@ class UserAccountDetails extends StatelessWidget {
           _onSignOuSuccess(state.successMessage, context);
         }
       },
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-        decoration: BoxDecoration(
-          color: kCardColor,
-          borderRadius: BorderRadius.circular(28),
-        ),
-        child: Row(
-          children: [
-            CircleAvatar(
-              radius: 32,
-              backgroundColor: kIconsBackgroundColor,
-              backgroundImage: currentUser.photoURL != null
-                  ? CachedNetworkImageProvider(
-                      currentUser.photoURL!,
-                    )
-                  : null,
-              child: currentUser.photoURL != null
-                  ? null
-                  : const SvgIconWidget(
-                      iconPath: 'assets/icons/account_icon.svg',
-                    ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Profile Info',
+            style: AppStyles.text20.copyWith(
+              color: kWhiteColor,
+              fontWeight: FontWeight.w500,
             ),
-            const SizedBox(width: 18),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          ),
+          const SizedBox(height: 8),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+            decoration: BoxDecoration(
+              color: kCardColor,
+              borderRadius: BorderRadius.circular(28),
+            ),
+            child: Row(
               children: [
-                Text(
-                  currentUser.displayName != null
-                      ? currentUser.displayName!
-                      : 'username',
-                  style: AppStyles.text22.copyWith(
-                    color: kWhiteColor,
-                    fontWeight: FontWeight.w500,
-                  ),
+                CircleAvatar(
+                  radius: 32,
+                  backgroundColor: kIconsBackgroundColor,
+                  backgroundImage: currentUser.photoURL != null
+                      ? CachedNetworkImageProvider(
+                          currentUser.photoURL!,
+                        )
+                      : null,
+                  child: currentUser.photoURL != null
+                      ? null
+                      : const SvgIconWidget(
+                          iconPath: 'assets/icons/account_icon.svg',
+                        ),
                 ),
-                const SizedBox(width: 4),
-                Text(
-                  currentUser.email != null ? currentUser.email! : 'email',
-                  style: AppStyles.text18.copyWith(
-                    color: kWhiteColor.withOpacity(0.6),
-                    fontWeight: FontWeight.w500,
-                  ),
+                const SizedBox(width: 18),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      currentUser.displayName != null
+                          ? currentUser.displayName!
+                          : 'username',
+                      style: AppStyles.text22.copyWith(
+                        color: kWhiteColor,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      currentUser.email != null ? currentUser.email! : 'email',
+                      style: AppStyles.text18.copyWith(
+                        color: kWhiteColor.withOpacity(0.6),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
