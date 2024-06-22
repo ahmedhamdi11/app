@@ -33,6 +33,19 @@ class AuthCubit extends Cubit<AuthStates> {
     }
   }
 
+  Future<void> registerUser() async {
+    if (formKey.currentState!.validate()) {
+      emit(SignInUserLoadingState());
+      var result =
+          await authRepo.registerUser(email: email, password: password);
+
+      result.fold(
+        (failure) => emit(SignInUserFailureState(failure.errMessage)),
+        (succussMessage) => emit(SignInUserSuccessState(succussMessage)),
+      );
+    }
+  }
+
   Future<void> singInWithGoogle() async {
     emit(SignInWithGoogleLoadingState());
     var result = await authRepo.singInWithGoogle();

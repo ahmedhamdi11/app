@@ -36,20 +36,16 @@ class MainPageView extends StatelessWidget {
             onTap: (value) => cubit.onViewChanges(value),
             items: [
               SvgIconWidget(
-                iconPath: 'assets/icons/home_icon.svg',
+                iconPath: 'assets/icons/explore_icon.svg',
                 iconColor: cubit.currentView == 0 ? kPrimaryColor : kWhiteColor,
               ),
               SvgIconWidget(
-                iconPath: 'assets/icons/explore_icon.svg',
+                iconPath: 'assets/icons/test_ai_icon.svg',
                 iconColor: cubit.currentView == 1 ? kPrimaryColor : kWhiteColor,
               ),
               SvgIconWidget(
-                iconPath: 'assets/icons/test_ai_icon.svg',
-                iconColor: cubit.currentView == 2 ? kPrimaryColor : kWhiteColor,
-              ),
-              SvgIconWidget(
                 iconPath: 'assets/icons/account_icon.svg',
-                iconColor: cubit.currentView == 3 ? kPrimaryColor : kWhiteColor,
+                iconColor: cubit.currentView == 2 ? kPrimaryColor : kWhiteColor,
               ),
             ],
           ),

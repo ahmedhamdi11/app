@@ -69,4 +69,28 @@ class AuthRepoImpl implements AuthRepo {
       return left(AuthFailure(e.toString()));
     }
   }
+
+  @override
+  Future<Either<Failure, String>> registerUser({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      return right('Welcome back!');
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDio(e));
+      } else if (e is FirebaseAuthException) {
+        if (e.code == 'INVALID_LOGIN_CREDENTIALS') {
+          return left(Failure('invalid email or password'));
+        } else {
+          return left(Failure(e.message!));
+        }
+      } else {
+        return left(Failure(e.toString()));
+      }
+    }
+  }
 }

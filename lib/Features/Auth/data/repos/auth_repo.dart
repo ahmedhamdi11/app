@@ -9,6 +9,11 @@ abstract class AuthRepo {
     required String password,
   });
 
+  Future<Either<Failure, String>> registerUser({
+    required String email,
+    required String password,
+  });
+
   Future<Either<Failure, UserCredential>> singInWithGoogle();
 
   Future<Either<Failure, String>> signOutUser(BuildContext context);

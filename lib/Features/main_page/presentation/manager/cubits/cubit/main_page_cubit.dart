@@ -2,7 +2,6 @@ import 'package:app/Features/explore/data/repos/explore_repo_impl.dart';
 import 'package:app/Features/explore/presentation/manager/cubits/cyber_news_cubit.dart/cyber_news_cubit.dart';
 import 'package:app/Features/explore/presentation/manager/cubits/threat_awareness_cubit/threat_awareness_cubit.dart';
 import 'package:app/Features/explore/presentation/views/explore_view.dart';
-import 'package:app/Features/home/presentation/views/home_view.dart';
 import 'package:app/Features/account/presentation/views/account_view.dart';
 import 'package:app/Features/main_page/data/model/app_views_model.dart';
 import 'package:app/Features/test/presentation/views/test_view.dart';
@@ -22,7 +21,6 @@ class MainPageCubit extends Cubit<MainPageStates> {
   }
 
   List<AppViewsModel> appViews = [
-    const AppViewsModel(title: 'Secure Shield', view: HomeView()),
     AppViewsModel(
       title: 'Explore',
       view: MultiBlocProvider(
