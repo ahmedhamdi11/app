@@ -44,7 +44,7 @@ class UserAccountDetails extends StatelessWidget {
         }
       },
       child: Container(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
         decoration: BoxDecoration(
           color: kCardColor,
           borderRadius: BorderRadius.circular(28),

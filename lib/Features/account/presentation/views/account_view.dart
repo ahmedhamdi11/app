@@ -1,3 +1,4 @@
+import 'package:app/Features/account/presentation/widgets/app_settings.dart';
 import 'package:app/Features/account/presentation/widgets/user_account_details.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -16,6 +17,8 @@ class AccountView extends StatelessWidget {
         children: const [
           SizedBox(height: 22),
           UserAccountDetails(),
+          SizedBox(height: 32),
+          AppSettings(),
         ],
       ),
     );
