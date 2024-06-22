@@ -14,10 +14,8 @@ class AccountView extends StatelessWidget {
       child: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         children: const [
-          SizedBox(
-            height: 22,
-          ),
-          UserAccountDetails()
+          SizedBox(height: 22),
+          UserAccountDetails(),
         ],
       ),
     );
