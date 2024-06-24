@@ -30,4 +30,31 @@ abstract class AppThemes {
 
     useMaterial3: true,
   );
+
+  static ThemeData lightTheme = ThemeData(
+    // text theme
+    textTheme: GoogleFonts.rubikTextTheme(),
+
+    // dialog theme
+    dialogTheme: const DialogTheme(
+      backgroundColor: kLightBackgroundColor,
+    ),
+
+    // color scheme
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: kPrimaryColor,
+      brightness: Brightness.light,
+    ),
+
+    // app bar theme
+    appBarTheme: const AppBarTheme(
+      backgroundColor: kLightBackgroundColor,
+      titleTextStyle: AppStyles.text22,
+      scrolledUnderElevation: 2,
+    ),
+
+    scaffoldBackgroundColor: kLightBackgroundColor,
+
+    useMaterial3: true,
+  );
 }

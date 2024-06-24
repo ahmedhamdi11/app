@@ -18,3 +18,8 @@ const kCardColor = Color(0xff241968);
 const kRedColor = Color(0xffFE4C78);
 const kWhiteColor = Colors.white;
 const kIconsBackgroundColor = Color(0xff6D50F7);
+
+const kLightBackgroundColor = Color(0xFFF5F5F5);
+const kLightCardColor = Color(0xFF79A3B1);
+const kLightTextColor = Color(0xff324558);
+const kNavBarColor = Color(0xffE4EBE9);

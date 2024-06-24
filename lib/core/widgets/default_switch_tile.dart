@@ -23,6 +23,7 @@ class DefaultSwitchTile extends StatelessWidget {
       dense: true,
       activeTrackColor: kPrimaryColor,
       activeColor: kWhiteColor,
+      inactiveThumbColor: kLightTextColor.withOpacity(0.9),
       contentPadding: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
