@@ -2,8 +2,10 @@ import 'package:app/Features/phishing_email_detection/presentation/manager/cubit
 import 'package:app/Features/phishing_email_detection/presentation/widgets/email_detection_body.dart';
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/functions/show_failure_dialog.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_alert_dialog.dart';
+import 'package:app/core/widgets/default_back_button.dart';
 import 'package:app/core/widgets/prediction_result_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +18,16 @@ class EmailDetectionView extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(title: const Text('Phishing Email Detection')),
+      appBar: AppBar(
+        title: Text(
+          'Phishing Email Detection',
+          style: TextStyle(
+            color:
+                context.read<ThemeCubit>().isDarkTheme ? null : kLightTextColor,
+          ),
+        ),
+        leading: const DefaultBackButton(),
+      ),
       body: BlocListener<PhishingEDCubit, PhishingEDStates>(
         listener: (context, state) {
           if (state is CheckEmailSuccessState) {

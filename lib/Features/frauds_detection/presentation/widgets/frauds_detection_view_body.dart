@@ -1,6 +1,7 @@
 import 'package:app/Features/frauds_detection/presentation/manager/cubits/cubit/frauds_detection_cubit.dart';
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/functions/show_failure_dialog.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_alert_dialog.dart';
 import 'package:app/core/widgets/default_button.dart';
@@ -32,7 +33,9 @@ class FraudsDetectionViewBody extends StatelessWidget {
         builder: (context, state) {
           return Center(
             child: Card(
-              color: kCardColor,
+              color: context.read<ThemeCubit>().isDarkTheme
+                  ? kCardColor
+                  : kLightCardColor,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25)),
               child: Padding(
@@ -72,9 +75,13 @@ class FraudsDetectionViewBody extends StatelessWidget {
                           ),
                     const SizedBox(height: 28.0),
                     if (fraudsDetectionCubit.file == null)
-                      const Text(
+                      Text(
                         'Pick a csv file to scan it.',
-                        style: TextStyle(color: Colors.grey),
+                        style: TextStyle(
+                          color: context.read<ThemeCubit>().isDarkTheme
+                              ? Colors.grey
+                              : kWhiteColor,
+                        ),
                       ),
 
                     if (fraudsDetectionCubit.file == null)

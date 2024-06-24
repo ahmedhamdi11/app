@@ -1,6 +1,8 @@
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DefaultTextField extends StatelessWidget {
   const DefaultTextField({
@@ -28,10 +30,12 @@ class DefaultTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+
     OutlineInputBorder outlineInputBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(12.0),
-      borderSide: const BorderSide(
-        color: kWhiteColor,
+      borderSide: BorderSide(
+        color: cubit.isDarkTheme ? kWhiteColor : kLightTextColor,
       ),
     );
     return TextFormField(
@@ -41,14 +45,17 @@ class DefaultTextField extends StatelessWidget {
       controller: controller,
       onChanged: onChanged,
       keyboardType: keyboardType,
-      style: const TextStyle(color: Colors.white),
+      style: TextStyle(
+        color: cubit.isDarkTheme ? Colors.white : kLightTextColor,
+      ),
 
       // text field decoration
       decoration: InputDecoration(
         border: outlineInputBorder,
         enabledBorder: outlineInputBorder,
         hintText: hintText,
-        hintStyle: AppStyles.text14,
+        hintStyle: AppStyles.text14.copyWith(
+            color: cubit.isDarkTheme ? null : kLightTextColor.withOpacity(0.3)),
         prefixIcon: prefix,
         suffixIcon: suffix,
         isDense: true,
