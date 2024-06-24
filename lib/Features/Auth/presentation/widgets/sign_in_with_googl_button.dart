@@ -1,5 +1,6 @@
 import 'package:app/Features/Auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +13,8 @@ class SignInWithGoogleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+
     return InkWell(
       onTap: () => BlocProvider.of<AuthCubit>(context).singInWithGoogle(),
       borderRadius: BorderRadius.circular(25),
@@ -20,7 +23,9 @@ class SignInWithGoogleButton extends StatelessWidget {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(25),
-          border: Border.all(color: kWhiteColor),
+          border: Border.all(
+            color: cubit.isDarkTheme ? kWhiteColor : kLightTextColor,
+          ),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -33,7 +38,9 @@ class SignInWithGoogleButton extends StatelessWidget {
             const SizedBox(width: 8),
             Text(
               'SIGN IN WITH GOOGLE',
-              style: AppStyles.text16.copyWith(color: kWhiteColor),
+              style: AppStyles.text16.copyWith(
+                color: cubit.isDarkTheme ? kWhiteColor : kLightTextColor,
+              ),
             ),
           ],
         ),

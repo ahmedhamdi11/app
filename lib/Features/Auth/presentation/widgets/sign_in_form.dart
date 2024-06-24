@@ -1,5 +1,6 @@
 import 'package:app/Features/Auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/widgets/default_button.dart';
 import 'package:app/core/widgets/default_text_field.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +62,9 @@ class SignInForm extends StatelessWidget {
                           ? Icons.visibility_off
                           : Icons.visibility,
                       size: 22.0,
-                      color: kWhiteColor,
+                      color: context.read<ThemeCubit>().isDarkTheme
+                          ? kWhiteColor
+                          : kLightTextColor,
                     ),
                   ),
                 ),

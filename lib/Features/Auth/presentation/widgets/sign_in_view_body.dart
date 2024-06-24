@@ -1,14 +1,18 @@
 import 'package:app/Features/Auth/presentation/widgets/sign_in_form.dart';
 import 'package:app/Features/Auth/presentation/widgets/sign_in_with_googl_button.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInViewBody extends StatelessWidget {
   const SignInViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 18.0),
       child: Center(
@@ -17,14 +21,18 @@ class SignInViewBody extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // sign in title
-              const Text(
+              Text(
                 'Sign in',
-                style: AppStyles.text34,
+                style: AppStyles.text34.copyWith(
+                  color: cubit.isDarkTheme ? null : kLightTextColor,
+                ),
               ),
               Text(
                 'Please sign in to continue.',
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.6),
+                  color: cubit.isDarkTheme
+                      ? Colors.white.withOpacity(0.6)
+                      : kLightTextColor.withOpacity(0.6),
                 ),
               ),
               const SizedBox(height: 22.0),
@@ -40,7 +48,9 @@ class SignInViewBody extends StatelessWidget {
                   Expanded(
                     child: Divider(
                       endIndent: 12,
-                      color: kWhiteColor.withOpacity(0.5),
+                      color: cubit.isDarkTheme
+                          ? kWhiteColor.withOpacity(0.5)
+                          : kLightTextColor.withOpacity(0.5),
                     ),
                   ),
                   Text(
@@ -50,7 +60,9 @@ class SignInViewBody extends StatelessWidget {
                   Expanded(
                     child: Divider(
                       indent: 12,
-                      color: kWhiteColor.withOpacity(0.5),
+                      color: cubit.isDarkTheme
+                          ? kWhiteColor.withOpacity(0.5)
+                          : kLightTextColor.withOpacity(0.5),
                     ),
                   ),
                 ],
