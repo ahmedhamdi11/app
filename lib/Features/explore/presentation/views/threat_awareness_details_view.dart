@@ -1,9 +1,11 @@
 import 'package:app/Features/explore/data/models/threat_awareness_model.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_back_button.dart';
 import 'package:app/core/widgets/default_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThreatAwarenessDetailsView extends StatelessWidget {
   const ThreatAwarenessDetailsView({super.key, required this.data});
@@ -24,7 +26,11 @@ class ThreatAwarenessDetailsView extends StatelessWidget {
           // title
           Text(
             data.title,
-            style: AppStyles.text22,
+            style: AppStyles.text22.copyWith(
+              color: context.read<ThemeCubit>().isDarkTheme
+                  ? kWhiteColor
+                  : kLightTextColor,
+            ),
           ),
 
           const SizedBox(height: 12),
@@ -74,7 +80,9 @@ class ThreatAwarenessDetailsView extends StatelessWidget {
           Text(
             data.desc,
             style: AppStyles.text16.copyWith(
-              color: kWhiteColor.withOpacity(0.8),
+              color: context.read<ThemeCubit>().isDarkTheme
+                  ? kWhiteColor.withOpacity(0.8)
+                  : kLightTextColor,
             ),
           ),
 

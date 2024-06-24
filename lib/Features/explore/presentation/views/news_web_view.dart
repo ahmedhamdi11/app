@@ -1,9 +1,11 @@
 import 'package:app/Features/explore/presentation/widgets/web_view_widgets/custom_bottom_sheet.dart';
 import 'package:app/Features/explore/presentation/widgets/web_view_widgets/news_web_view_body.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_back_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class NewsWebview extends StatefulWidget {
@@ -62,7 +64,9 @@ class _NewsWebviewState extends State<NewsWebview> {
       title: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
         decoration: BoxDecoration(
-          color: kCardColor,
+          color: context.read<ThemeCubit>().isDarkTheme
+              ? kCardColor
+              : kLightCardColor,
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Text(
@@ -75,9 +79,11 @@ class _NewsWebviewState extends State<NewsWebview> {
       actions: [
         IconButton(
           onPressed: () => _showModalSheet(),
-          icon: const Icon(
+          icon: Icon(
             Icons.more_vert,
-            color: kWhiteColor,
+            color: context.read<ThemeCubit>().isDarkTheme
+                ? kWhiteColor
+                : kLightTextColor,
           ),
         ),
       ],
