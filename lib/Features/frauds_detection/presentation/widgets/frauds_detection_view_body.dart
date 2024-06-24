@@ -114,12 +114,16 @@ class FraudsDetectionViewBody extends StatelessWidget {
   }
 
   _onSuccess(BuildContext context, DetectFraudsSuccessState state) {
+    final cubit = context.read<ThemeCubit>();
+
     return showDialog(
       context: context,
       builder: (context) => DefaultAlertDialog(
-        title: const Text(
+        title: Text(
           'Result',
-          style: AppStyles.text16,
+          style: AppStyles.text16.copyWith(
+            color: cubit.isDarkTheme ? null : kLightTextColor,
+          ),
         ),
         content: PredictionResultView(
           prediction: state.prediction.prediction,
