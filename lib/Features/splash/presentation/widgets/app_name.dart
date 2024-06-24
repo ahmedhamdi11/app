@@ -1,5 +1,6 @@
 import 'package:app/Features/splash/presentation/manager/cubit/splash_view_cubit.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +13,7 @@ class AppName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
     SplashViewCubit splashViewCubit = BlocProvider.of<SplashViewCubit>(context);
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -39,8 +41,12 @@ class AppName extends StatelessWidget {
                     : 20,
             decoration: BoxDecoration(
               color: splashViewCubit.isExpanded
-                  ? kBackgroundColor
-                  : kSecondaryColor.withOpacity(0.8),
+                  ? cubit.isDarkTheme
+                      ? kBackgroundColor
+                      : kLightBackgroundColor
+                  : cubit.isDarkTheme
+                      ? kSecondaryColor.withOpacity(0.8)
+                      : kLightTextColor,
               borderRadius: BorderRadius.circular(25.0),
             ),
             child: splashViewCubit.isRectangle

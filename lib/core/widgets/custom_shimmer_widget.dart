@@ -98,7 +98,7 @@ class _CustomShimmerWidgetState extends State<CustomShimmerWidget>
   Color _getDefaultBaseColor(ThemeCubit cubit) {
     return cubit.isDarkTheme
         ? kIconsBackgroundColor.withOpacity(0.3)
-        : kLightTextColor.withOpacity(0.3);
+        : kLightTextColor.withOpacity(0.2);
   }
 }
 
