@@ -2,6 +2,7 @@ import 'package:app/Features/explore/presentation/manager/cubits/threat_awarenes
 import 'package:app/Features/explore/presentation/widgets/shimmer_widgets/threat_listview_shimmer.dart';
 import 'package:app/Features/explore/presentation/widgets/threat_awareness_listview_item.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +13,8 @@ class ThreatAwarenessListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,24 +25,26 @@ class ThreatAwarenessListView extends StatelessWidget {
             children: [
               Text(
                 'Threat Awareness',
-                style: AppStyles.text22.copyWith(color: kWhiteColor),
+                style: AppStyles.text22.copyWith(
+                  color: cubit.isDarkTheme ? kWhiteColor : kLightTextColor,
+                ),
               ),
               const Spacer(),
 
-              // show more button
-              InkWell(
-                onTap: () {},
-                borderRadius: BorderRadius.circular(12.0),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  child: Text(
-                    'More >',
-                    style: AppStyles.text14.copyWith(color: kSecondaryColor),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 4),
+              // // show more button
+              // InkWell(
+              //   onTap: () {},
+              //   borderRadius: BorderRadius.circular(12.0),
+              //   child: Padding(
+              //     padding:
+              //         const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              //     child: Text(
+              //       'More >',
+              //       style: AppStyles.text14.copyWith(color: kSecondaryColor),
+              //     ),
+              //   ),
+              // ),
+              // const SizedBox(width: 4),
             ],
           ),
         ),

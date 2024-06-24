@@ -1,8 +1,10 @@
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_button.dart';
 import 'package:app/core/widgets/svg_icon_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TestAiModelsCard extends StatelessWidget {
   const TestAiModelsCard({
@@ -20,8 +22,10 @@ class TestAiModelsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+
     return Card(
-      color: kCardColor,
+      color: cubit.isDarkTheme ? kCardColor : kLightCardColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
       ),
@@ -34,7 +38,9 @@ class TestAiModelsCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 20,
-                  backgroundColor: kIconsBackgroundColor,
+                  backgroundColor: cubit.isDarkTheme
+                      ? kIconsBackgroundColor
+                      : kLightTextColor.withOpacity(0.8),
                   child: SvgIconWidget(
                     iconPath: iconPath,
                   ),

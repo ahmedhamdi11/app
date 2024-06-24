@@ -1,12 +1,16 @@
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/widgets/custom_shimmer_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ThreatListViewShimmer extends StatelessWidget {
   const ThreatListViewShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+
     return ListView.builder(
       padding: const EdgeInsetsDirectional.only(start: 12.0),
       scrollDirection: Axis.horizontal,
@@ -14,7 +18,7 @@ class ThreatListViewShimmer extends StatelessWidget {
       itemBuilder: (context, index) => SizedBox(
         width: MediaQuery.sizeOf(context).width * 0.8,
         child: Card(
-          color: kCardColor,
+          color: cubit.isDarkTheme ? kCardColor : kLightCardColor,
           margin: const EdgeInsetsDirectional.only(end: 8),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),

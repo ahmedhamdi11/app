@@ -1,6 +1,8 @@
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/widgets/custom_shimmer_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NewsListViewShimmer extends StatelessWidget {
   const NewsListViewShimmer({super.key});
@@ -42,7 +44,9 @@ class NewsListViewShimmer extends StatelessWidget {
 
             // article card
             Card(
-              color: kCardColor,
+              color: context.read<ThemeCubit>().isDarkTheme
+                  ? kCardColor
+                  : kLightCardColor,
               margin: const EdgeInsets.all(3),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),

@@ -1,9 +1,11 @@
 import 'package:app/Features/explore/data/models/news_model.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_router.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class NewsArticleItem extends StatelessWidget {
@@ -16,6 +18,8 @@ class NewsArticleItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
       child: InkWell(
@@ -33,7 +37,7 @@ class NewsArticleItem extends StatelessWidget {
                 width: 85,
                 height: 85,
                 decoration: BoxDecoration(
-                  color: kPrimaryColor,
+                  color: cubit.isDarkTheme ? kPrimaryColor : kLightTextColor,
                   borderRadius: BorderRadius.circular(28),
                 ),
               ),
@@ -45,7 +49,7 @@ class NewsArticleItem extends StatelessWidget {
                 width: 85,
                 height: 85,
                 decoration: BoxDecoration(
-                  color: kPrimaryColor,
+                  color: cubit.isDarkTheme ? kPrimaryColor : kLightTextColor,
                   borderRadius: BorderRadius.circular(28),
                 ),
               ),
@@ -53,7 +57,7 @@ class NewsArticleItem extends StatelessWidget {
 
             // article card
             Card(
-              color: kCardColor,
+              color: cubit.isDarkTheme ? kCardColor : kLightCardColor,
               margin: const EdgeInsets.all(3),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
@@ -100,7 +104,9 @@ class NewsArticleItem extends StatelessWidget {
                             textAlign: TextAlign.right,
                             overflow: TextOverflow.ellipsis,
                             style: AppStyles.text14.copyWith(
-                              color: kSecondaryColor,
+                              color: cubit.isDarkTheme
+                                  ? kSecondaryColor
+                                  : kLightTextColor,
                             ),
                           ),
                         ],

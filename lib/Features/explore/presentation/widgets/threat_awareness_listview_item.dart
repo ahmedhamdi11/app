@@ -1,9 +1,11 @@
 import 'package:app/Features/explore/data/models/threat_awareness_model.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_router.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class ThreatAwarenessListViewItem extends StatelessWidget {
@@ -16,6 +18,8 @@ class ThreatAwarenessListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+
     return GestureDetector(
       onTap: () {
         GoRouter.of(context).push(
@@ -26,7 +30,7 @@ class ThreatAwarenessListViewItem extends StatelessWidget {
       child: SizedBox(
         width: MediaQuery.sizeOf(context).width * 0.8,
         child: Card(
-          color: kCardColor,
+          color: cubit.isDarkTheme ? kCardColor : kLightCardColor,
           margin: const EdgeInsetsDirectional.only(end: 8),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(25),

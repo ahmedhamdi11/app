@@ -1,5 +1,7 @@
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
 class CustomShimmerWidget extends StatefulWidget {
@@ -60,11 +62,12 @@ class _CustomShimmerWidgetState extends State<CustomShimmerWidget>
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+
     switch (widget.shimmerLoadingType) {
       case ShimmerLoadingType.shimmer:
         return Shimmer.fromColors(
-          baseColor:
-              widget.shimmerBaseColor ?? kIconsBackgroundColor.withOpacity(0.3),
+          baseColor: widget.shimmerBaseColor ?? _getDefaultBaseColor(cubit),
           highlightColor:
               widget.shimmerHighlightColor ?? kPrimaryColor.withOpacity(0.25),
           child: Container(
@@ -90,6 +93,12 @@ class _CustomShimmerWidgetState extends State<CustomShimmerWidget>
           ),
         );
     }
+  }
+
+  Color _getDefaultBaseColor(ThemeCubit cubit) {
+    return cubit.isDarkTheme
+        ? kIconsBackgroundColor.withOpacity(0.3)
+        : kLightTextColor.withOpacity(0.3);
   }
 }
 

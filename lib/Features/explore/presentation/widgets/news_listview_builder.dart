@@ -2,6 +2,7 @@ import 'package:app/Features/explore/presentation/manager/cubits/cyber_news_cubi
 import 'package:app/Features/explore/presentation/widgets/news_article_item.dart';
 import 'package:app/Features/explore/presentation/widgets/shimmer_widgets/news_listview_shimmer.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +15,8 @@ class NewsListViewBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: Column(
@@ -22,7 +25,9 @@ class NewsListViewBuilder extends StatelessWidget {
           // title
           Text(
             'Cyber security news',
-            style: AppStyles.text22.copyWith(color: kWhiteColor),
+            style: AppStyles.text22.copyWith(
+              color: cubit.isDarkTheme ? kWhiteColor : kLightTextColor,
+            ),
           ),
 
           const SizedBox(height: 12),
