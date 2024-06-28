@@ -38,60 +38,37 @@ class AppSettings extends StatelessWidget {
               ),
               child: Material(
                 color: Colors.transparent,
-                child: DefaultSwitchTile(
-                  value: cubit.isDarkTheme,
-                  titleText: "Dark Theme",
-                  onChanged: (value) => cubit.changeTheme(value),
-                  icon: Icon(
-                    cubit.isDarkTheme ? Icons.dark_mode : Icons.light_mode,
-                    color: cubit.isDarkTheme
-                        ? kIconsBackgroundColor
-                        : kLightTextColor,
-                  ),
+                child: Column(
+                  children: [
+                    // theme switch
+                    DefaultSwitchTile(
+                      value: cubit.isDarkTheme,
+                      titleText: "Dark Theme",
+                      onChanged: (value) => cubit.changeTheme(value),
+                      icon: Icon(
+                        cubit.isDarkTheme ? Icons.dark_mode : Icons.light_mode,
+                        color: cubit.isDarkTheme
+                            ? kIconsBackgroundColor
+                            : kLightTextColor,
+                      ),
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // notifications switch
+                    DefaultSwitchTile(
+                      value: cubit.isDarkTheme,
+                      titleText: "Receive Notifications",
+                      onChanged: (value) {},
+                      icon: Icon(
+                        Icons.notifications_active,
+                        color: cubit.isDarkTheme
+                            ? kIconsBackgroundColor
+                            : kLightTextColor,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ),
-
-            const SizedBox(height: 8),
-
-            // lang
-            AnimatedContainer(
-              height: 74,
-              duration: const Duration(milliseconds: 250),
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-              decoration: BoxDecoration(
-                color: cubit.isDarkTheme ? kCardColor : kLightCardColor,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    child: Icon(
-                      Icons.language_rounded,
-                      color: cubit.isDarkTheme
-                          ? kIconsBackgroundColor
-                          : kLightTextColor,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    'Language',
-                    style: AppStyles.text16.copyWith(
-                      color: kWhiteColor,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'English',
-                    style: AppStyles.text16.copyWith(
-                      color:
-                          cubit.isDarkTheme ? kPrimaryColor : kLightTextColor,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ],
               ),
             ),
           ],
