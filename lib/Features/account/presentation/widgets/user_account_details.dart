@@ -84,30 +84,35 @@ class UserAccountDetails extends StatelessWidget {
                             ),
                     ),
                     const SizedBox(width: 18),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          currentUser.displayName != null &&
-                                  currentUser.displayName != ''
-                              ? currentUser.displayName!
-                              : 'username',
-                          style: AppStyles.text22.copyWith(
-                            color: kWhiteColor,
-                            fontWeight: FontWeight.w500,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            currentUser.displayName != null &&
+                                    currentUser.displayName != ''
+                                ? currentUser.displayName!
+                                : 'username',
+                            style: AppStyles.text22.copyWith(
+                              color: kWhiteColor,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          currentUser.email != null
-                              ? currentUser.email!
-                              : 'email',
-                          style: AppStyles.text18.copyWith(
-                            color: kWhiteColor.withOpacity(0.6),
-                            fontWeight: FontWeight.w500,
+                          const SizedBox(width: 4),
+                          FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              currentUser.email != null
+                                  ? currentUser.email!
+                                  : 'email',
+                              style: AppStyles.text18.copyWith(
+                                color: kWhiteColor.withOpacity(0.6),
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),
