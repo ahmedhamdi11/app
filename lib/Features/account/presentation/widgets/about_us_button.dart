@@ -1,6 +1,7 @@
 import 'dart:math' show pi;
 
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/functions/scroll_to_item.dart';
 import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,8 @@ class AboutUsButton extends StatefulWidget {
 
 class _AboutUsButtonState extends State<AboutUsButton> {
   bool _isExpanded = false;
+  final GlobalKey _globalKey = GlobalKey();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +28,22 @@ class _AboutUsButtonState extends State<AboutUsButton> {
 
     return GestureDetector(
       onTap: () {
+        // toggle the expand
         setState(() {
           _isExpanded = !_isExpanded;
         });
+
+        // scroll to the button to be fully displayed
+        if (_isExpanded) {
+          Future.delayed(const Duration(milliseconds: 100)).then(
+            (value) => scrollToItem(_globalKey),
+          );
+        }
       },
       child: AnimatedContainer(
+        key: _globalKey,
         height: _isExpanded ? 350 : 74,
-        duration: const Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 280),
         padding: const EdgeInsets.only(left: 16, right: 16, top: 16, bottom: 8),
         decoration: BoxDecoration(
           color: cubit.isDarkTheme ? kCardColor : kLightCardColor,
@@ -80,17 +92,22 @@ class _AboutUsButtonState extends State<AboutUsButton> {
                 child: Animate(
                   effects: const [FadeEffect()],
                   child: Scrollbar(
+                    controller: _scrollController,
                     radius: const Radius.circular(20),
                     thumbVisibility: true,
-                    child: ListView(
-                      children: [
-                        Text(
-                          'About Us' * 200,
-                          style: AppStyles.text14.copyWith(
-                            color: kWhiteColor.withOpacity(0.9),
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: ListView(
+                        controller: _scrollController,
+                        children: [
+                          Text(
+                            'About Us' * 200,
+                            style: AppStyles.text14.copyWith(
+                              color: kWhiteColor.withOpacity(0.9),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),
