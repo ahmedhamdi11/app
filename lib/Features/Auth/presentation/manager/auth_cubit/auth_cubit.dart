@@ -17,6 +17,7 @@ class AuthCubit extends Cubit<AuthStates> {
 
   late String registerEmail;
   late String registerPassword;
+  late String fullName;
 
   bool isHiddenPassword = true;
 
@@ -52,7 +53,10 @@ class AuthCubit extends Cubit<AuthStates> {
 
       result.fold(
         (failure) => emit(RegisterFailureState(failure.errMessage)),
-        (succussMessage) => emit(RegisterSuccessState(succussMessage)),
+        (succussMessage) {
+          FirebaseAuth.instance.currentUser?.updateDisplayName(fullName);
+          emit(RegisterSuccessState(succussMessage));
+        },
       );
     }
   }

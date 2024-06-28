@@ -31,6 +31,24 @@ class _RegisterFormState extends State<RegisterForm> {
         children: [
           // email field
           DefaultTextField(
+            hintText: 'Full Name',
+            onChanged: (value) {
+              cubit.fullName = value;
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter your email.';
+              } else {
+                return null;
+              }
+            },
+            keyboardType: TextInputType.name,
+          ),
+
+          const SizedBox(height: 12.0),
+
+          // email field
+          DefaultTextField(
             hintText: 'Email',
             onChanged: (value) {
               cubit.registerEmail = value;
@@ -48,21 +66,17 @@ class _RegisterFormState extends State<RegisterForm> {
           const SizedBox(height: 12.0),
 
           // password field
-          BlocBuilder<AuthCubit, AuthStates>(
-            builder: (context, state) {
-              return DefaultTextField(
-                hintText: 'Password',
-                onChanged: (value) {
-                  cubit.registerPassword = value;
-                },
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your password.';
-                  } else {
-                    return null;
-                  }
-                },
-              );
+          DefaultTextField(
+            hintText: 'Password',
+            onChanged: (value) {
+              cubit.registerPassword = value;
+            },
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Please enter your password.';
+              } else {
+                return null;
+              }
             },
           ),
 
