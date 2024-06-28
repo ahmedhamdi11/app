@@ -1,6 +1,5 @@
-import 'dart:math';
-
 import 'package:app/Features/Auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import 'package:app/Features/account/presentation/widgets/about_us_button.dart';
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/functions/open_whatsapp_contact.dart';
 import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
@@ -75,46 +74,7 @@ class OtherSettings extends StatelessWidget {
             const SizedBox(height: 8),
 
             // about us
-            AnimatedContainer(
-              height: 74,
-              duration: const Duration(milliseconds: 250),
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-              decoration: BoxDecoration(
-                color: cubit.isDarkTheme ? kCardColor : kLightCardColor,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    child: Icon(
-                      Icons.info_outline,
-                      color: cubit.isDarkTheme
-                          ? kIconsBackgroundColor
-                          : kLightTextColor,
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    'About Us',
-                    style: AppStyles.text16.copyWith(
-                      color: kWhiteColor,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  const Spacer(),
-                  Transform.rotate(
-                    angle: -pi / 2,
-                    child: Icon(
-                      Icons.arrow_back_ios_new,
-                      color:
-                          cubit.isDarkTheme ? kPrimaryColor : kLightTextColor,
-                      size: 18,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            const AboutUsButton(),
 
             const SizedBox(height: 8),
 
