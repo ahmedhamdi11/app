@@ -74,6 +74,28 @@ class AppSettings extends StatelessWidget {
                         );
                       },
                     ),
+
+                    BlocBuilder<NotificationsCubit, NotificationsStates>(
+                      builder: (context, state) {
+                        return AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          height:
+                              notificationsCubit.receiveNotifications ? 0 : 22,
+                          alignment: Alignment.center,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              'you won\'t receive any alerts and notifications',
+                              style: AppStyles.text14.copyWith(
+                                color: cubit.isDarkTheme
+                                    ? kRedColor
+                                    : Colors.red.shade900,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
