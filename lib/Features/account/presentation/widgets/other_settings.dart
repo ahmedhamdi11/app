@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:app/Features/Auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/functions/open_whatsapp_contact.dart';
 import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:app/core/widgets/default_alert_dialog.dart';
@@ -118,71 +119,82 @@ class OtherSettings extends StatelessWidget {
             const SizedBox(height: 8),
 
             // support
-            Container(
-              height: 74,
-              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-              decoration: BoxDecoration(
-                color: cubit.isDarkTheme ? kCardColor : kLightCardColor,
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () => openWhatsappContact(),
                 borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    child: Icon(
-                      Icons.support_agent_outlined,
-                      color: cubit.isDarkTheme
-                          ? kIconsBackgroundColor
-                          : kLightTextColor,
-                    ),
+                child: Ink(
+                  height: 74,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                  decoration: BoxDecoration(
+                    color: cubit.isDarkTheme ? kCardColor : kLightCardColor,
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                  const SizedBox(width: 8),
-                  Text(
-                    'Technical support',
-                    style: AppStyles.text16.copyWith(
-                      color: kWhiteColor,
-                      fontWeight: FontWeight.w400,
-                    ),
+                  child: Row(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        child: Icon(
+                          Icons.support_agent_outlined,
+                          color: cubit.isDarkTheme
+                              ? kIconsBackgroundColor
+                              : kLightTextColor,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        'Technical support',
+                        style: AppStyles.text16.copyWith(
+                          color: kWhiteColor,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
 
             const SizedBox(height: 8),
 
             // sign out
-            InkWell(
-              onTap: () => _signOut(context, cubit),
-              borderRadius: BorderRadius.circular(20),
-              child: Container(
-                height: 74,
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-                decoration: BoxDecoration(
-                  color: cubit.isDarkTheme ? kCardColor : Colors.transparent,
-                  borderRadius: BorderRadius.circular(20),
-                  border: cubit.isDarkTheme
-                      ? null
-                      : Border.all(width: 1, color: kLightCardColor),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      child: const Icon(
-                        Icons.logout,
-                        color: kRedColor,
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () => _signOut(context, cubit),
+                borderRadius: BorderRadius.circular(20),
+                child: Ink(
+                  height: 74,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                  decoration: BoxDecoration(
+                    color: cubit.isDarkTheme ? kCardColor : Colors.transparent,
+                    borderRadius: BorderRadius.circular(20),
+                    border: cubit.isDarkTheme
+                        ? null
+                        : Border.all(width: 1, color: kLightCardColor),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        child: const Icon(
+                          Icons.logout,
+                          color: kRedColor,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      'Sign out',
-                      style: AppStyles.text16.copyWith(
-                        color: kRedColor,
-                        fontWeight: FontWeight.w400,
+                      const SizedBox(width: 8),
+                      Text(
+                        'Sign out',
+                        style: AppStyles.text16.copyWith(
+                          color: kRedColor,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

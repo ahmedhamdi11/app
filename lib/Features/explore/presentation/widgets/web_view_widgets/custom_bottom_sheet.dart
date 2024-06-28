@@ -70,7 +70,7 @@ class CustomBottomSheet extends StatelessWidget {
             leadingIcon: Icons.refresh,
           ),
           DefaultListTile(
-            onTap: () => launchUrlInBrowser(context, url: url),
+            onTap: () => appUrlLauncher(url: url),
             title: Text(
               'Open in browser',
               style: TextStyle(
