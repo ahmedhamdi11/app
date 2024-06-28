@@ -1,3 +1,4 @@
+import 'package:app/Features/Auth/presentation/views/register_view.dart';
 import 'package:app/Features/Auth/presentation/views/sign_in_view.dart';
 import 'package:app/Features/attack_detection/data/repos/attack_detection_repo_impl.dart';
 import 'package:app/Features/attack_detection/presentation/manager/cubits/attack_detection_cubit/attack_detection_cubit.dart';
@@ -28,6 +29,7 @@ import 'package:go_router/go_router.dart';
 abstract class AppRouter {
   static const onBoardingViewPath = '/onBoardingViewPath';
   static const signInViewPath = '/signInViewPath';
+  static const registerViewPath = '/registerViewPath';
   static const emailDetectionViewPath = '/emailDetectionViewPath';
   static const fraudsDetectionViewPath = '/fraudsDetectionViewPath';
   static const attackDetectionViewPath = '/attackDetectionViewPath';
@@ -69,6 +71,15 @@ abstract class AppRouter {
           transitionType: TransitionTypeEnum.fade,
           duration: const Duration(milliseconds: 650),
           child: const SignInView(),
+        ),
+      ),
+
+      GoRoute(
+        path: registerViewPath,
+        pageBuilder: (context, state) => defaultPageTransitionBuilder(
+          key: state.pageKey,
+          transitionType: TransitionTypeEnum.rtlWithFade,
+          child: const RegisterView(),
         ),
       ),
 

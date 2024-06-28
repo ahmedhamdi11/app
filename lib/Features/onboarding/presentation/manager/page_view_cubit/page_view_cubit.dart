@@ -1,8 +1,10 @@
 import 'package:app/Features/onBoarding/data/data_source/static/onboarding_static_data.dart';
+import 'package:app/core/services/service_locator.dart';
 import 'package:app/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'page_view_state.dart';
 
@@ -24,7 +26,7 @@ class PageViewCubit extends Cubit<PageViewStates> {
         curve: Curves.fastOutSlowIn,
       );
     } else {
-      // getIt<SharedPreferences>().setBool('onboarding', true);
+      getIt<SharedPreferences>().setBool('onboarding', true);
       GoRouter.of(context).pushReplacement(AppRouter.signInViewPath);
     }
   }

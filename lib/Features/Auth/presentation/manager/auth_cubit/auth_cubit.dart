@@ -9,10 +9,14 @@ class AuthCubit extends Cubit<AuthStates> {
   AuthCubit(this.authRepo) : super(AuthInitialState());
   AuthRepo authRepo;
 
-  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  late GlobalKey<FormState> registerFormKey;
+  late GlobalKey<FormState> signInFormKey;
 
-  late String email;
-  late String password;
+  late String signInEmail;
+  late String signInPassword;
+
+  late String registerEmail;
+  late String registerPassword;
 
   bool isHiddenPassword = true;
 
@@ -22,26 +26,33 @@ class AuthCubit extends Cubit<AuthStates> {
   }
 
   Future<void> signInUser() async {
-    if (formKey.currentState!.validate()) {
-      emit(SignInUserLoadingState());
-      var result = await authRepo.signInUser(email: email, password: password);
+    if (signInFormKey.currentState!.validate()) {
+      emit(AuthLoadingState());
+
+      var result = await authRepo.signInUser(
+        email: signInEmail,
+        password: signInPassword,
+      );
 
       result.fold(
-        (failure) => emit(SignInUserFailureState(failure.errMessage)),
-        (succussMessage) => emit(SignInUserSuccessState(succussMessage)),
+        (failure) => emit(AuthFailureState(failure.errMessage)),
+        (succussMessage) => emit(AuthSuccessState(succussMessage)),
       );
     }
   }
 
   Future<void> registerUser() async {
-    if (formKey.currentState!.validate()) {
-      emit(SignInUserLoadingState());
-      var result =
-          await authRepo.registerUser(email: email, password: password);
+    if (registerFormKey.currentState!.validate()) {
+      emit(AuthLoadingState());
+
+      var result = await authRepo.registerUser(
+        email: registerEmail,
+        password: registerPassword,
+      );
 
       result.fold(
-        (failure) => emit(SignInUserFailureState(failure.errMessage)),
-        (succussMessage) => emit(SignInUserSuccessState(succussMessage)),
+        (failure) => emit(AuthFailureState(failure.errMessage)),
+        (succussMessage) => emit(AuthSuccessState(succussMessage)),
       );
     }
   }
@@ -51,7 +62,7 @@ class AuthCubit extends Cubit<AuthStates> {
     var result = await authRepo.singInWithGoogle();
 
     result.fold(
-      (failure) => emit(SignInUserFailureState(failure.errMessage)),
+      (failure) => emit(AuthFailureState(failure.errMessage)),
       (userCredential) => emit(SignInWithGoogleSuccessState(userCredential)),
     );
   }

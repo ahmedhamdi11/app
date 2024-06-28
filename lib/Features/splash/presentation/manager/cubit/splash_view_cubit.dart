@@ -1,10 +1,12 @@
 import 'dart:async';
 
+import 'package:app/core/services/service_locator.dart';
 import 'package:app/core/utils/app_router.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'splash_view_state.dart';
 
@@ -49,26 +51,21 @@ class SplashViewCubit extends Cubit<SplashViewStates> {
   }
 
   void _navigateBasedOnCondition(BuildContext context) {
-    // String? token = getIt<SharedPreferences>().getString('token');
-    // bool? onboarding = getIt<SharedPreferences>().getBool('onboarding');
+    bool? onboarding = getIt<SharedPreferences>().getBool('onboarding');
 
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-        GoRouter.of(context).pushReplacement(AppRouter.onBoardingViewPath);
+        if (onboarding == true) {
+          GoRouter.of(context).pushReplacement(AppRouter.signInViewPath);
+        } else {
+          GoRouter.of(context).pushReplacement(AppRouter.onBoardingViewPath);
+        }
         return;
       } else {
         GoRouter.of(context).pushReplacement(AppRouter.mainPageViewPath);
         return;
       }
     });
-
-    // if (token != null) {
-    //   Navigator.of(context).pushReplacementNamed(AppRouter.mainPagePath);
-    // } else if (onboarding == true) {
-    //   Navigator.of(context).pushReplacementNamed(AppRouter.signInViewPath);
-    // } else {
-    //   Navigator.of(context).pushReplacementNamed(AppRouter.onBoardingViewPath);
-    // }
   }
 
   @override

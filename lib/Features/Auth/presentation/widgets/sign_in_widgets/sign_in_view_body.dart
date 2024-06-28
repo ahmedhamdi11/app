@@ -1,10 +1,12 @@
-import 'package:app/Features/Auth/presentation/widgets/sign_in_form.dart';
-import 'package:app/Features/Auth/presentation/widgets/sign_in_with_googl_button.dart';
+import 'package:app/Features/Auth/presentation/widgets/sign_in_widgets/sign_in_form.dart';
+import 'package:app/Features/Auth/presentation/widgets/sign_in_widgets/sign_in_with_googl_button.dart';
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
+import 'package:app/core/utils/app_router.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SignInViewBody extends StatelessWidget {
   const SignInViewBody({super.key});
@@ -45,7 +47,7 @@ class SignInViewBody extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Don\'t have an account? ',
+                    'Don\'t have an account?',
                     style: AppStyles.text14.copyWith(
                       color: cubit.isDarkTheme
                           ? Colors.white.withOpacity(0.8)
@@ -54,7 +56,8 @@ class SignInViewBody extends StatelessWidget {
                   ),
                   // register button
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () =>
+                        GoRouter.of(context).push(AppRouter.registerViewPath),
                     child: const Text('Register Now'),
                   ),
                 ],
