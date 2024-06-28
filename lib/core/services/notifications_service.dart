@@ -4,7 +4,6 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 class NotificationServices {
   static final _awesomeNotifications = AwesomeNotifications();
 
-  static String reminderChannelKey = 'reminder_channel';
   static String basicChannelKey = 'basic_channel';
 
   static Future<void> initializeNotification() async {
@@ -20,7 +19,7 @@ class NotificationServices {
           playSound: true,
           enableVibration: true,
           enableLights: true,
-          defaultColor: kRedColor,
+          defaultColor: kPrimaryColor,
         ),
       ],
     );
