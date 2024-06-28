@@ -72,16 +72,7 @@ class SignInForm extends StatelessWidget {
             },
           ),
 
-          // forgot password button
-          Align(
-            alignment: Alignment.centerRight,
-            child: TextButton(
-              onPressed: () {},
-              child: const Text('Forgot password?'),
-            ),
-          ),
-
-          const SizedBox(height: 8.0),
+          const SizedBox(height: 16.0),
 
           // sign in button
           BlocBuilder<AuthCubit, AuthStates>(

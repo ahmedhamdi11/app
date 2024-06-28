@@ -40,7 +40,27 @@ class SignInViewBody extends StatelessWidget {
               // email field, password field ,sign in button
               const SignInForm(),
 
-              const SizedBox(height: 48),
+              const SizedBox(height: 12.0),
+
+              Row(
+                children: [
+                  Text(
+                    'Don\'t have an account? ',
+                    style: AppStyles.text14.copyWith(
+                      color: cubit.isDarkTheme
+                          ? Colors.white.withOpacity(0.8)
+                          : kLightTextColor.withOpacity(0.6),
+                    ),
+                  ),
+                  // register button
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text('Register Now'),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 42),
 
               // social logins
               Row(
