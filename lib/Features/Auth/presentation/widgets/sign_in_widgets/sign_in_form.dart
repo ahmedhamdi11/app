@@ -88,7 +88,7 @@ class _SignInFormState extends State<SignInForm> {
           // sign in button
           BlocBuilder<AuthCubit, AuthStates>(
             builder: (context, state) {
-              if (state is AuthLoadingState) {
+              if (state is SignInLoadingState) {
                 return const SizedBox(
                   height: 55,
                   child: Center(child: CircularProgressIndicator()),

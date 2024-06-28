@@ -14,15 +14,15 @@ class SignInView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthCubit, AuthStates>(
       listener: (context, state) {
-        if (state is AuthFailureState) {
+        if (state is SignInFailureState) {
           _onSignInFailure(state.errMessage);
-        } else if (state is AuthSuccessState) {
+        } else if (state is SignInSuccessState) {
           _onSignInSuccess(state.successMessage, context);
         } else if (state is SignInWithGoogleFailureState) {
           _onSignInFailure(state.errMessage);
         } else if (state is SignInWithGoogleSuccessState) {
           _onSignInSuccess(
-            'Welcome Back ${state.userCredential.user!.displayName}',
+            'Welcome Back ${state.userCredential.user?.displayName ?? ''}',
             context,
           );
         }

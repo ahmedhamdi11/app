@@ -8,12 +8,18 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthRepoImpl implements AuthRepo {
   @override
-  Future<Either<Failure, String>> signInUser(
-      {required String email, required String password}) async {
+  Future<Either<Failure, String>> signInUser({
+    required String email,
+    required String password,
+  }) async {
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: email, password: password);
-      return right('Welcome back!');
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return right(
+        'Welcome back! ${FirebaseAuth.instance.currentUser?.displayName ?? ''}',
+      );
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDio(e));
@@ -76,9 +82,11 @@ class AuthRepoImpl implements AuthRepo {
     required String password,
   }) async {
     try {
-      await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: email, password: password);
-      return right('Welcome back!');
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      return right('Account created, signIn now!');
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDio(e));

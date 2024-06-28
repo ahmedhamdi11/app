@@ -71,7 +71,7 @@ class _RegisterFormState extends State<RegisterForm> {
           // register button
           BlocBuilder<AuthCubit, AuthStates>(
             builder: (context, state) {
-              if (state is AuthLoadingState) {
+              if (state is RegisterLoadingState) {
                 return const SizedBox(
                   height: 55,
                   child: Center(child: CircularProgressIndicator()),

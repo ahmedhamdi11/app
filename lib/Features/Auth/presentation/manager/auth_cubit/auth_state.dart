@@ -6,18 +6,34 @@ class AuthInitialState extends AuthStates {}
 
 class TogglePasswordVisibilityState extends AuthStates {}
 
-class AuthLoadingState extends AuthStates {}
+/// sign in states
+class SignInLoadingState extends AuthStates {}
 
-class AuthSuccessState extends AuthStates {
+class SignInSuccessState extends AuthStates {
   final String successMessage;
 
-  AuthSuccessState(this.successMessage);
+  SignInSuccessState(this.successMessage);
 }
 
-class AuthFailureState extends AuthStates {
+class SignInFailureState extends AuthStates {
   final String errMessage;
 
-  AuthFailureState(this.errMessage);
+  SignInFailureState(this.errMessage);
+}
+
+/// register states
+class RegisterLoadingState extends AuthStates {}
+
+class RegisterSuccessState extends AuthStates {
+  final String successMessage;
+
+  RegisterSuccessState(this.successMessage);
+}
+
+class RegisterFailureState extends AuthStates {
+  final String errMessage;
+
+  RegisterFailureState(this.errMessage);
 }
 
 // sign in with google states

@@ -27,7 +27,7 @@ class AuthCubit extends Cubit<AuthStates> {
 
   Future<void> signInUser() async {
     if (signInFormKey.currentState!.validate()) {
-      emit(AuthLoadingState());
+      emit(SignInLoadingState());
 
       var result = await authRepo.signInUser(
         email: signInEmail,
@@ -35,15 +35,15 @@ class AuthCubit extends Cubit<AuthStates> {
       );
 
       result.fold(
-        (failure) => emit(AuthFailureState(failure.errMessage)),
-        (succussMessage) => emit(AuthSuccessState(succussMessage)),
+        (failure) => emit(SignInFailureState(failure.errMessage)),
+        (succussMessage) => emit(SignInSuccessState(succussMessage)),
       );
     }
   }
 
   Future<void> registerUser() async {
     if (registerFormKey.currentState!.validate()) {
-      emit(AuthLoadingState());
+      emit(RegisterLoadingState());
 
       var result = await authRepo.registerUser(
         email: registerEmail,
@@ -51,8 +51,8 @@ class AuthCubit extends Cubit<AuthStates> {
       );
 
       result.fold(
-        (failure) => emit(AuthFailureState(failure.errMessage)),
-        (succussMessage) => emit(AuthSuccessState(succussMessage)),
+        (failure) => emit(RegisterFailureState(failure.errMessage)),
+        (succussMessage) => emit(RegisterSuccessState(succussMessage)),
       );
     }
   }
@@ -62,7 +62,7 @@ class AuthCubit extends Cubit<AuthStates> {
     var result = await authRepo.singInWithGoogle();
 
     result.fold(
-      (failure) => emit(AuthFailureState(failure.errMessage)),
+      (failure) => emit(SignInWithGoogleFailureState(failure.errMessage)),
       (userCredential) => emit(SignInWithGoogleSuccessState(userCredential)),
     );
   }
