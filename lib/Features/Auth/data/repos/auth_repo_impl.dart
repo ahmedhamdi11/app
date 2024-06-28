@@ -1,5 +1,6 @@
 import 'package:app/Features/Auth/data/repos/auth_repo.dart';
 import 'package:app/core/errors/failures.dart';
+import 'package:app/core/services/fcm_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,6 +18,8 @@ class AuthRepoImpl implements AuthRepo {
         email: email,
         password: password,
       );
+
+      await FCMService.messaging.subscribeToTopic('all');
       return right(
         'Welcome back! ${FirebaseAuth.instance.currentUser?.displayName ?? ''}',
       );
@@ -59,6 +62,7 @@ class AuthRepoImpl implements AuthRepo {
       UserCredential userCredential =
           await FirebaseAuth.instance.signInWithCredential(credential);
 
+      await FCMService.messaging.subscribeToTopic('all');
       return right(userCredential);
     } catch (e) {
       return left(AuthFailure(e.toString()));

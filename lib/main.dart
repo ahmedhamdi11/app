@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:app/Features/Auth/data/repos/auth_repo_impl.dart';
 import 'package:app/Features/Auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
+import 'package:app/core/services/fcm_service.dart';
 import 'package:app/core/services/service_locator.dart';
 import 'package:app/core/utils/app_router.dart';
 import 'package:app/core/utils/app_themes.dart';
@@ -22,6 +25,13 @@ void main() async {
 
   // setup service locator
   await setupServiceLocator();
+
+  // fcm
+  FCMService.onBackgroundMessage();
+  FCMService.onForegroundMessageListener();
+  FCMService.setupInteractedMessage();
+
+  log((await FCMService.getMessagingToken()).toString());
 
   runApp(const MyApp());
 }
