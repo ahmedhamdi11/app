@@ -1,6 +1,8 @@
 import 'package:app/core/constants/constants.dart';
+import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DefaultSwitchTile extends StatelessWidget {
   const DefaultSwitchTile({
@@ -18,12 +20,17 @@ class DefaultSwitchTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<ThemeCubit>();
+
     return SwitchListTile(
       value: value,
       dense: true,
       activeTrackColor: kPrimaryColor,
       activeColor: kWhiteColor,
-      inactiveThumbColor: kLightTextColor.withOpacity(0.9),
+      inactiveTrackColor:
+          cubit.isDarkTheme ? kWhiteColor.withOpacity(0.9) : null,
+      inactiveThumbColor:
+          cubit.isDarkTheme ? null : kLightTextColor.withOpacity(0.9),
       contentPadding: EdgeInsets.zero,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),

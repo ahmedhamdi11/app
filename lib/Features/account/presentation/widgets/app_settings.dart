@@ -1,3 +1,4 @@
+import 'package:app/Features/account/manager/notifications_cubit/notifications_cubit_cubit.dart';
 import 'package:app/core/constants/constants.dart';
 import 'package:app/core/manager/theme_cubit/theme_cubit.dart';
 import 'package:app/core/utils/app_styles.dart';
@@ -11,6 +12,7 @@ class AppSettings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<ThemeCubit>();
+    final notificationsCubit = context.read<NotificationsCubit>();
 
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, state) {
@@ -56,16 +58,21 @@ class AppSettings extends StatelessWidget {
                     const SizedBox(height: 16),
 
                     // notifications switch
-                    DefaultSwitchTile(
-                      value: cubit.isDarkTheme,
-                      titleText: "Receive Notifications",
-                      onChanged: (value) {},
-                      icon: Icon(
-                        Icons.notifications_active,
-                        color: cubit.isDarkTheme
-                            ? kIconsBackgroundColor
-                            : kLightTextColor,
-                      ),
+                    BlocBuilder<NotificationsCubit, NotificationsStates>(
+                      builder: (context, state) {
+                        return DefaultSwitchTile(
+                          value: notificationsCubit.receiveNotifications,
+                          titleText: "Receive Notifications",
+                          onChanged: (value) => notificationsCubit
+                              .onReceiveNotificationsChanged(value),
+                          icon: Icon(
+                            Icons.notifications_active,
+                            color: cubit.isDarkTheme
+                                ? kIconsBackgroundColor
+                                : kLightTextColor,
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),

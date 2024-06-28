@@ -1,5 +1,7 @@
 part of 'notifications_cubit_cubit.dart';
 
-sealed class NotificationsCubitState {}
+sealed class NotificationsStates {}
 
-final class NotificationsCubitInitial extends NotificationsCubitState {}
+final class NotificationsCubitInitial extends NotificationsStates {}
+
+final class OnReceiveNotificationButtonChanges extends NotificationsStates {}
