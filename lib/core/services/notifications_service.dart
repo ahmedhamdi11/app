@@ -8,7 +8,7 @@ class NotificationServices {
 
   static Future<void> initializeNotification() async {
     await _awesomeNotifications.initialize(
-      null,
+      "resource://drawable/ic_stat_shield",
       [
         NotificationChannel(
           channelKey: basicChannelKey,
@@ -20,6 +20,7 @@ class NotificationServices {
           enableVibration: true,
           enableLights: true,
           defaultColor: kPrimaryColor,
+          icon: "resource://drawable/ic_stat_shield",
         ),
       ],
     );
@@ -51,6 +52,7 @@ class NotificationServices {
         category: category,
         color: kPrimaryColor,
         locked: locked,
+        icon: "resource://drawable/ic_stat_shield",
       ),
       actionButtons: actionButtons,
       schedule: scheduled

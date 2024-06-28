@@ -6,11 +6,19 @@
     <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY"/>
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    
+
     <application
         android:label="Secure Shield"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- meta data tags for notifications icon -->
+        <meta-data
+        android:name="com.google.firebase.messaging.default_notification_icon"
+        android:resource="@drawable/ic_stat_shield" />
+        <meta-data android:name="com.google.firebase.messaging.default_notification_color" 
+        android:resource="@color/primaryColor" />
+        
         <activity
             android:name=".MainActivity"
             android:exported="true"

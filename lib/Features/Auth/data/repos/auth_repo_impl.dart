@@ -1,11 +1,13 @@
 import 'package:app/Features/Auth/data/repos/auth_repo.dart';
 import 'package:app/core/errors/failures.dart';
 import 'package:app/core/services/fcm_service.dart';
+import 'package:app/core/services/service_locator.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthRepoImpl implements AuthRepo {
   @override
@@ -74,6 +76,9 @@ class AuthRepoImpl implements AuthRepo {
     try {
       await FirebaseAuth.instance.signOut();
       await GoogleSignIn().signOut();
+      await FCMService.messaging.subscribeToTopic('all');
+      await getIt<SharedPreferences>().remove('receive_notifications');
+
       return right('Signed out');
     } catch (e) {
       return left(AuthFailure(e.toString()));
