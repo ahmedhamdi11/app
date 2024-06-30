@@ -103,9 +103,34 @@ class _AboutUsButtonState extends State<AboutUsButton> {
                           padding: const EdgeInsets.only(bottom: 12),
                           child: ListView(
                             controller: _scrollController,
+                            padding: EdgeInsets.zero,
                             children: [
                               Text(
-                                'About Us' * 200,
+                                """
+Secure Shield is an innovative application that protects individuals and organizations from cyber threats, safeguards bank accounts, secures all electronic devices, and raises awareness about cybersecurity by providing information on how to protect against cyberattacks.
+
+Secure Shield App Features:
+ * Email Protection: Secure Shield protects your email from phishing attacks and spam.
+ 
+ * Fraud Protection: Secure Shield helps prevent fraudulent transactions and identity theft.
+ 
+ * Virus Protection: Secure Shield guards your devices against malware and viruses.
+ 
+Secure Shield App Benefits:
+ * Easy to Use: Secure Shield is user-friendly and can be easily used by individuals and organizations.
+ 
+ * Enhanced Security: Secure Shield provides comprehensive protection against a wide range of cyber threats.
+ 
+ * Peace of Mind: Secure Shield gives you peace of mind knowing that your data and devices are safe.
+
+Our Team:
+ * Eng. Ahmed Hamdy
+ * Eng. Iman Ali Shaaban
+ * Eng. Mohamed Salah
+ * Eng. Yasmine Mahrous
+ * Eng. Mohamed Tamer
+ * Eng. Ahmed Abdel Azim
+""",
                                 style: AppStyles.text14.copyWith(
                                   color: kWhiteColor.withOpacity(0.9),
                                 ),
